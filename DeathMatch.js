@@ -31,9 +31,9 @@ export function DeathMatch() {
         } else if (this.humanCombatant.length > 1) {
             console.log("Cant select allies to fight");
             
-        } else if (this.hordeCombatant > 1) {
+        } else if (this.hordeCombatant.length > 1) {
             console.log("Cant select allies to fight");
-        } else if (this.hordeCombatant.length === 0 && this.humanCombatant.length > 0 || this.hordeCombatant.length > 0 && this.hordeCombatant.length === 0) {
+        } else if (this.hordeCombatant.length === 0 && this.humanCombatant.length > 0 || this.hordeCombatant.length > 0 && this.humanCombatant.length === 0) {
             console.log("Choose opponent");
         }
 
