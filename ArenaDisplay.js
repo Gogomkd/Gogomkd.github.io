@@ -67,88 +67,143 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("healthBar1");
         $("<div>").addClass("bar");
         $("<div>").addClass("hit");
-        $("<div>").addClass("fightButtons").appendTo(".mainContainer")
-        $("<button>").addClass("fightButton").html("FIGHT").appendTo(".fightButtons").on("click", (event) => {
-            $("#button1").off(".allianceWarrior");
+        $("<div>").addClass("holder").css("visibility", "hidden", "margin-top", "130").appendTo(".mainContainer")
+
+
+        $("<div>").addClass("button").css("visibility", "hidden").appendTo(".holder").on("click", (event) => {
+            $("#button1").css("display","none");
+            $("#button2").css("display","none");
+            $("#button3").css("display","none");
+            $("#button4").css("display","none");
+            $("#button5").css("display","none");
+            $("#button6").css("display","none");
             var result = this.arena.fight();
             event = result;
             console.log(event);
             
         });
-        $("<button>").addClass("resetButton").html("RESET").appendTo(".fightButtons").on("click", (event) => {
+        $("<p>Ready</p>").addClass("btnText").appendTo(".button");
+        $("<div>").addClass("btnTwo").appendTo(".button");
+        $("<p>Fight</p>").addClass("btnText2").appendTo(".btnTwo");  
+
+
+
+        $("<div>").addClass("button1").css("visibility", "hidden").appendTo(".holder").on("click", (event) => {
             event.preventDefault();
             $(".mainContainer").html("");
             this.arena.humanCombatant = [];
             this.arena.hordeCombatant = [];
             this.battleField(event.target);
-        })
-        $("<button>").attr("id", "button1").html("Choose").appendTo(".allianceWarrior").on("click", (event) => {
+        });
+        $("<p>Arena</p>").addClass("btnText").appendTo(".button1");
+        $("<div>").addClass("btnTwo1").appendTo(".button1");
+        $("<p>Reset</p>").addClass("btnText2").appendTo(".btnTwo1"); 
+        
+        
+
+        $("<button>").addClass("button2").attr("id", "button1").appendTo(".allianceWarrior").on("click", (event) => {
             event = this.arena.getHumanWarrior();
             $(".allianceWarrior").appendTo(".fightContainer");
             var that = this;
+            $(".button").css("visibility", "visible");
+            $(".button1").css("visibility", "visible");
             $("<div>").addClass("healthBar1").appendTo(".fightContainer");
-            $("<div>").addClass("bar").appendTo(".healthBar1");
-            $("<div>").addClass("hit").appendTo(".bar");
+            $("<div>").addClass("bar1").appendTo(".healthBar1");
+            $("<div>").addClass("hit1").appendTo(".bar1");
             $("<p>").addClass("healthBarP").html(that.arena.human.health).appendTo(".healthBar1");
             console.log(that.arena.human.health);
             console.log(event);
             $("#button1").css("display","none");
 
         });
-        $("<button>").attr("id", "button2").html("Choose").appendTo(".allianceSorcerer").on("click", (event) => {
+        $("<p>Choose</p>").addClass("btnText").appendTo(".button2");
+        $("<div>").addClass("btnTwo3").appendTo(".button2");
+        $("<p>Varian</p>").addClass("btnText2").appendTo(".btnTwo3");
+
+        $("<button>").addClass("button3").attr("id", "button2").appendTo(".allianceSorcerer").on("click", (event) => {
             event = this.arena.getHumanSorcerer();
             var that = this;
+            $(".button").css("visibility", "visible");
+            $(".button1").css("visibility", "visible");
             $(".allianceSorcerer").css("margin", "0").appendTo(".fightContainer");
             $("<div>").addClass("healthBar1").appendTo(".fightContainer");
-            $("<div>").addClass("bar").appendTo(".healthBar1");
-            $("<div>").addClass("hit").appendTo(".bar");
+            $("<div>").addClass("bar1").appendTo(".healthBar1");
+            $("<div>").addClass("hit1").appendTo(".bar1");
             $("<p>").addClass("healthBarP").appendTo(".healthBar1").html(that.arena.humanMage.health);
             console.log(event);
             $("#button2").css("display","none");
         });
-        $("<button>").attr("id", "button3").html("Choose").appendTo(".allianceDwarf").on("click", (event) => {
+        $("<p>Choose</p>").addClass("btnText").appendTo(".button3");
+        $("<div>").addClass("btnTwo4").appendTo(".button3");
+        $("<p>Jaina</p>").addClass("btnText2").appendTo(".btnTwo4");
+
+        $("<button>").addClass("button4").attr("id", "button3").appendTo(".allianceDwarf").on("click", (event) => {
             event = this.arena.getDwarfWarrior();
             var that = this;
+            $(".button").css("visibility", "visible");
+            $(".button1").css("visibility", "visible");
             $(".allianceDwarf").appendTo(".fightContainer");
             $("<div>").addClass("healthBar1").appendTo(".fightContainer");
-            $("<div>").addClass("bar").appendTo(".healthBar1");
-            $("<div>").addClass("hit").appendTo(".bar");
+            $("<div>").addClass("bar1").appendTo(".healthBar1");
+            $("<div>").addClass("hit1").appendTo(".bar1");
             $("<p>").addClass("healthBarP").appendTo(".healthBar1").html(that.arena.dwarf.health);
             console.log(event);
             $("#button3").css("display","none");
         });
-        $("<button>").attr("id", "button4").html("Choose").appendTo(".hordeWarrior").on("click", (event) => {
+        $("<p>Choose</p>").addClass("btnText").appendTo(".button4");
+        $("<div>").addClass("btnTwo5").appendTo(".button4");
+        $("<p>Brann</p>").addClass("btnText2").appendTo(".btnTwo5");
+
+        $("<button>").addClass("button5").attr("id", "button4").appendTo(".hordeWarrior").on("click", (event) => {
             event = this.arena.getOrcWarrior();
             var that = this;
+            $(".button").css("visibility", "visible");
+            $(".button1").css("visibility", "visible");
             $(".hordeWarrior").appendTo(".fightContainer");
             $("<div>").addClass("healthBar2").appendTo(".fightContainer");
-            $("<div>").addClass("bar").appendTo(".healthBar2");
-            $("<div>").addClass("hit").appendTo(".bar");
+            $("<div>").addClass("bar2").appendTo(".healthBar2");
+            $("<div>").addClass("hit2").appendTo(".bar2");
             $("<p>").addClass("healthBarP").appendTo(".healthBar2").html(that.arena.orc.health);
             console.log(event);
             $("#button4").css("display","none");
         });
-        $("<button>").attr("id", "button5").html("Choose").appendTo(".hordeBloodElf").on("click", (event) => {
+        $("<p>Choose</p>").addClass("btnText").appendTo(".button5");
+        $("<div>").addClass("btnTwo6").appendTo(".button5");
+        $("<p>Thrall</p>").addClass("btnText2").appendTo(".btnTwo6");
+
+        $("<button>").addClass("button6").attr("id", "button5").appendTo(".hordeBloodElf").on("click", (event) => {
             event = this.arena.getBloodElf();
             var that = this;
+            $(".button").css("visibility", "visible");
+            $(".button1").css("visibility", "visible");
             $(".hordeBloodElf").css("margin", "0").appendTo(".fightContainer");
             $("<div>").addClass("healthBar2").appendTo(".fightContainer");
-            $("<div>").addClass("bar").appendTo(".healthBar2");
-            $("<div>").addClass("hit").appendTo(".bar");
+            $("<div>").addClass("bar2").appendTo(".healthBar2");
+            $("<div>").addClass("hit2").appendTo(".bar2");
             $("<p>").addClass("healthBarP").appendTo(".healthBar2").html(that.arena.bloodElf.health);
             console.log(event);
             $("#button5").css("display","none");
         });
-        $("<button>").attr("id", "button6").html("Choose").appendTo(".hordeUndead").on("click", (event) => {
+        $("<p>Choose</p>").addClass("btnText").appendTo(".button6");
+        $("<div>").addClass("btnTwo7").appendTo(".button6");
+        $("<p>Feyvea</p>").addClass("btnText2").appendTo(".btnTwo7");
+
+        $("<button>").addClass("button7").attr("id", "button6").appendTo(".hordeUndead").on("click", (event) => {
             event = this.arena.getUndeadWarrior();
             var that = this;
+            $(".button").css("visibility", "visible");
+            $(".button1").css("visibility", "visible");
             $(".hordeUndead").appendTo(".fightContainer");
             $("<div>").addClass("healthBar2").appendTo(".fightContainer");
-            $("<div>").addClass("bar").appendTo(".healthBar2");
-            $("<div>").addClass("hit").appendTo(".bar");
+            $("<div>").addClass("bar2").appendTo(".healthBar2");
+            $("<div>").addClass("hit2").appendTo(".bar2");
             $("<p>").addClass("healthBarP").appendTo(".healthBar2").html(that.arena.undead.health);
             console.log(event);
             $("#button6").css("display","none");
         });
+        $("<p>Choose</p>").addClass("btnText").appendTo(".button7");
+        $("<div>").addClass("btnTwo8").appendTo(".button7");
+        $("<p>Talbot</p>").addClass("btnText2").appendTo(".btnTwo8");
+
     }
 }

@@ -7,7 +7,7 @@ export function Undead(name) {
     this.armor = getRandom(1,3);
     this.type = "mage";
     this.attackSpeed = 1500;
-    
+   
 }
 
 Undead.prototype = new ArenaCombatants();

@@ -6,4 +6,5 @@ function Being() {
             this.isAlive = false;
         }
     }
+    
 }

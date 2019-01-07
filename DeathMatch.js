@@ -42,13 +42,13 @@ export function DeathMatch() {
             if (!tepac1.isAlive || !tepac2.isAlive) {
                 if (!tepac1.isAlive) {
                     console.log("Winner is ", tepac2.name + " with " + tepac2.health + " health left ");
-                    tepac2.health += 500;
+                    // tepac2.health += 500;
                     console.log(tepac2.health);
                     
 
                 } else {
                     console.log("Winner is ", tepac1.name + " with " + tepac1.health + " health left ");
-                    tepac1.health += 500;
+                    // tepac1.health += 500;
                     console.log(tepac1.health);
                 }
                 return true;
