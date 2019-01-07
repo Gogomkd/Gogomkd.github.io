@@ -30,7 +30,7 @@ export function DeathMatch() {
             console.log("Choose your figthers");
         } else if (this.humanCombatant.length > 1) {
             console.log("Cant select allies to fight");
-
+            
         } else if (this.hordeCombatant > 1) {
             console.log("Cant select allies to fight");
         } else if (this.hordeCombatant.length === 0 && this.humanCombatant.length > 0 || this.hordeCombatant.length > 0 && this.hordeCombatant.length === 0) {
@@ -61,7 +61,9 @@ export function DeathMatch() {
                             clearInterval(combo1);
                             clearInterval(combo2);
                         }
+                        
                    }, tepac1.attackSpeed);
+                //    tepac2.updateHealthBar2();
                     var combo2 = await setInterval(() => {
                         tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.block - tepac1.armor));
 
@@ -71,6 +73,7 @@ export function DeathMatch() {
                         }
                   
                     }, tepac2.attackSpeed);
+                    // tepac1.updateHealthBar1();
                     console.log("");
                     
                     return combo1, combo2;
@@ -85,6 +88,7 @@ export function DeathMatch() {
                             // clearInterval(combo2);
                         }
                     }, tepac1.attackSpeed);
+                    // tepac2.updateHealthBar2();
                     var combo2 = await setInterval(() => {
                         tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.armor));
                         if (!tepac1.isAlive || !tepac2.isAlive) {
@@ -93,6 +97,7 @@ export function DeathMatch() {
                         }
 
                     }, tepac2.attackSpeed);
+                    // tepac1.updateHealthBar1();
                     console.log("");
                     return combo1, combo2;
                 }
@@ -106,6 +111,7 @@ export function DeathMatch() {
                             clearInterval(combo1);
                         }
                      }, tepac1.attackSpeed);
+                    //  tepac2.updateHealthBar2();
                     var combo2 = await setInterval(() => {
                         tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.armor + tepac2.spell));
                         if (!tepac1.isAlive || !tepac2.isAlive) {
@@ -113,6 +119,7 @@ export function DeathMatch() {
                             clearInterval(combo1);
                         }
                     }, tepac2.attackSpeed);
+                    // tepac1.updateHealthBar1();
                     console.log("");
                     return combo1, combo2;
                 }

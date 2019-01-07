@@ -7,6 +7,7 @@ export function HumanWarrior (name){
     this.armor = getRandom(2,7);
     this.type = "warrior";
     this.attackSpeed = 1500;
+    
 }
 
 HumanWarrior.prototype = new ArenaCombatants();

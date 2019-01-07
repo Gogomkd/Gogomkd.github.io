@@ -69,9 +69,11 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("hit");
         $("<div>").addClass("fightButtons").appendTo(".mainContainer")
         $("<button>").addClass("fightButton").html("FIGHT").appendTo(".fightButtons").on("click", (event) => {
+            $("#button1").off(".allianceWarrior");
             var result = this.arena.fight();
             event = result;
             console.log(event);
+            
         });
         $("<button>").addClass("resetButton").html("RESET").appendTo(".fightButtons").on("click", (event) => {
             event.preventDefault();
@@ -87,9 +89,10 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("healthBar1").appendTo(".fightContainer");
             $("<div>").addClass("bar").appendTo(".healthBar1");
             $("<div>").addClass("hit").appendTo(".bar");
-            $("<p>").addClass("healthBarP").html(that.arena.human.health).appendTo(".healthBar1").ready(that.arena.human.updateHealthBar());
+            $("<p>").addClass("healthBarP").html(that.arena.human.health).appendTo(".healthBar1");
             console.log(that.arena.human.health);
             console.log(event);
+            $("#button1").css("display","none");
 
         });
         $("<button>").attr("id", "button2").html("Choose").appendTo(".allianceSorcerer").on("click", (event) => {
@@ -101,6 +104,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit").appendTo(".bar");
             $("<p>").addClass("healthBarP").appendTo(".healthBar1").html(that.arena.humanMage.health);
             console.log(event);
+            $("#button2").css("display","none");
         });
         $("<button>").attr("id", "button3").html("Choose").appendTo(".allianceDwarf").on("click", (event) => {
             event = this.arena.getDwarfWarrior();
@@ -111,6 +115,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit").appendTo(".bar");
             $("<p>").addClass("healthBarP").appendTo(".healthBar1").html(that.arena.dwarf.health);
             console.log(event);
+            $("#button3").css("display","none");
         });
         $("<button>").attr("id", "button4").html("Choose").appendTo(".hordeWarrior").on("click", (event) => {
             event = this.arena.getOrcWarrior();
@@ -121,6 +126,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit").appendTo(".bar");
             $("<p>").addClass("healthBarP").appendTo(".healthBar2").html(that.arena.orc.health);
             console.log(event);
+            $("#button4").css("display","none");
         });
         $("<button>").attr("id", "button5").html("Choose").appendTo(".hordeBloodElf").on("click", (event) => {
             event = this.arena.getBloodElf();
@@ -131,6 +137,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit").appendTo(".bar");
             $("<p>").addClass("healthBarP").appendTo(".healthBar2").html(that.arena.bloodElf.health);
             console.log(event);
+            $("#button5").css("display","none");
         });
         $("<button>").attr("id", "button6").html("Choose").appendTo(".hordeUndead").on("click", (event) => {
             event = this.arena.getUndeadWarrior();
@@ -141,7 +148,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit").appendTo(".bar");
             $("<p>").addClass("healthBarP").appendTo(".healthBar2").html(that.arena.undead.health);
             console.log(event);
-
+            $("#button6").css("display","none");
         });
     }
 }

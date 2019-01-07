@@ -7,6 +7,7 @@ export function OrcWarrior (name){
     this.armor = getRandom(4,7);
     this.type = "warrior";
     this.attackSpeed = 1800;
+    
 }
 
 OrcWarrior.prototype = new ArenaCombatants();

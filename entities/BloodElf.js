@@ -7,7 +7,7 @@ export function BloodElf (name){
     this.armor = getRandom(3,6);
     this.type = "warrior";
     this.attackSpeed = 2100;
-
+    
 }
 
 BloodElf.prototype = new ArenaCombatants();

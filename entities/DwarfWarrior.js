@@ -7,6 +7,7 @@ export function DwarfWarrior(name) {
     this.type = "warrior";
     this.armor = getRandom(5,8);
     this.attackSpeed = 1700;
+    
 }
 
 DwarfWarrior.prototype = new ArenaCombatants();

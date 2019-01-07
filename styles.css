@@ -376,7 +376,7 @@ body {
   transition: width .5s linear;
 }
 
-.hit {
+.hit{
   background: rgba(255,255,255,0.6);
   position: absolute;
   top: 0;
