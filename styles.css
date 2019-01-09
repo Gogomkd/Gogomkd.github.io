@@ -533,8 +533,9 @@ body {
     grid-row: 3;
     display:flex;
     flex-wrap:wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-self: center;
+    margin-left:50px;
   }
 /* 
 .fightButtons{
@@ -647,24 +648,21 @@ body {
 
 
 
-.healthBar1, .healthBar2 {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+.healthBar1, .healthBar2, .healthBar3, .healthBar4, .healthBar5, .healthBar6{
+  display:block;
   box-sizing: border-box;
-  width: 200px;
+  width: 150px;
   height: 20px;
   padding: 5px;
   background: #ddd;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 5px;
   position: relative;
-  grid-row:3;
-  margin-top: 150px;
+  /* grid-row:3; */
+  margin-top: 10px;
   margin-right:50px;
 }
 
-.bar1, .bar2 {
+.bar1, .bar2, .bar3, .bar4, .bar5, .bar6 {
   background: #c54;
   width: 100%;
   height: 10px;
@@ -672,7 +670,7 @@ body {
   transition: width .5s linear;
 }
 
-.hit1, .hit2{
+.hit1, .hit2, .hit3, .hit4, .hit5, .hit6 {
   background: rgba(255,255,255,0.6);
   position: absolute;
   top: 0;
@@ -686,4 +684,20 @@ body {
   width:100%;
   color: white;
   text-align: center;
+}
+
+
+
+.health-bar {
+  background-color: #007f00;
+  width: inherit;
+  height: 20px;
+  position: relative;
+  bottom: 56px;
+}
+
+.health-bar-red {
+  width: 100%;
+  height: 100%;
+  background-color: #cc0000;
 }

@@ -1,7 +1,8 @@
 import {ArenaLook} from "/ArenaDisplay.js"
 
 async function Main() {
-    var match = await new ArenaLook("Nagrand");
-    match.battleField();
+    var match =  new ArenaLook("Nagrand");
+    var newMatch = await match.battleField();
+    return newMatch;
 }
 Main();

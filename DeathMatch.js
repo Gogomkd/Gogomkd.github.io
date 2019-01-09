@@ -61,7 +61,10 @@ export function DeathMatch() {
                             clearInterval(combo1);
                             clearInterval(combo2);
                         }
-                        
+                        this.updateHealthOfCombatants(tepac1.health);
+                    this.updateHealthOfCombatants(tepac2.health);
+                    
+                    
                    }, tepac1.attackSpeed);
                 //    tepac2.updateHealthBar2();
                     var combo2 = await setInterval(() => {
@@ -71,7 +74,8 @@ export function DeathMatch() {
                             clearInterval(combo1);
                             clearInterval(combo2);
                         }
-                  
+                        this.updateHealthOfCombatants(tepac1);
+                    this.updateHealthOfCombatants(tepac2);
                     }, tepac2.attackSpeed);
                     // tepac1.updateHealthBar1();
                     console.log("");
@@ -87,6 +91,8 @@ export function DeathMatch() {
                             clearInterval(combo1);
                             // clearInterval(combo2);
                         }
+                        this.updateHealthOfCombatants(tepac1);
+                        this.updateHealthOfCombatants(tepac2);
                     }, tepac1.attackSpeed);
                     // tepac2.updateHealthBar2();
                     var combo2 = await setInterval(() => {
@@ -95,7 +101,8 @@ export function DeathMatch() {
                             clearInterval(combo2);
                             // clearInterval(combo1);
                         }
-
+                        this.updateHealthOfCombatants(tepac1);
+                    this.updateHealthOfCombatants(tepac2);
                     }, tepac2.attackSpeed);
                     // tepac1.updateHealthBar1();
                     console.log("");
@@ -110,6 +117,8 @@ export function DeathMatch() {
                             clearInterval(combo2);
                             clearInterval(combo1);
                         }
+                        this.updateHealthOfCombatants(tepac1);
+                    this.updateHealthOfCombatants(tepac2);
                      }, tepac1.attackSpeed);
                     //  tepac2.updateHealthBar2();
                     var combo2 = await setInterval(() => {
@@ -118,15 +127,18 @@ export function DeathMatch() {
                             clearInterval(combo2);
                             clearInterval(combo1);
                         }
+                        this.updateHealthOfCombatants(tepac1);
+                    this.updateHealthOfCombatants(tepac2);
                     }, tepac2.attackSpeed);
                     // tepac1.updateHealthBar1();
                     console.log("");
+                    
                     return combo1, combo2;
                 }
 
             }
 
-
+            
             this.fight();
             return;
         }
@@ -162,6 +174,10 @@ export function DeathMatch() {
     this.getUndeadWarrior = function () {
         this.hordeCombatant.push(this.undead);
         console.log(this.hordeCombatant);
+    }
+    this.updateHealthOfCombatants = function(health) {
+        this.health = health;
+        
     }
 
 }

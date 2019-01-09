@@ -2,7 +2,7 @@ function ArenaCombatants() {
     this.attack = function (target, damage) {
         console.log(this.name + " has attacked " + target.name + " for " + damage + " damage")
         target.receiveDamage(damage);
-        target.updateHealthBar(damage);
+        target.updateHealthBar(target.health, damage);
         console.log(target.name + " has " + target.health+ " health");
         console.log("");
     }
@@ -11,22 +11,24 @@ function ArenaCombatants() {
         this.checkLife();
         
     }
-   this.updateHealthBar = function( damage){
-    hBar = $('.healthBar1'),
-    bar = hBar.find('.bar1'),
-    hit = hBar.find('.hit1');
-    var total = this.health;
+
     
-    var currentHealth = total - damage;
-    var barWidth = (currentHealth / total) * 100 + "%";
-    var hitWidth = (damage / currentHealth) * 100 ;
-    hit.css('width', hitWidth);
-    hBar.data('this.health', currentHealth);
-    setTimeout(function(){
-        hit.css({'width': '0'});
-        bar.css('width', barWidth + "%");
-      }, 300);
-   }
+   
+   
+   this.applyChange = function(curHealth) {
+    var a = curHealth * (100 / maxHealth);
+    $(".health-bar-text").html(Math.round(a) + "%");
+    $(".health-bar-red").animate({
+      'width': a + "%"
+    }, 700);
+    $(".health-bar").animate({
+      'width': a + "%"
+    }, 500);
+    $(".health-bar-blue").animate({
+      'width': a + "%"
+    }, 300);
+    $('.total').html(curHealth + "/" + maxHealth);
+  }
     
 
 }
