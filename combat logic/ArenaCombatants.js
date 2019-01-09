@@ -11,26 +11,6 @@ function ArenaCombatants() {
         this.checkLife();
         
     }
-
-    
-   
-   
-   this.applyChange = function(curHealth) {
-    var a = curHealth * (100 / maxHealth);
-    $(".health-bar-text").html(Math.round(a) + "%");
-    $(".health-bar-red").animate({
-      'width': a + "%"
-    }, 700);
-    $(".health-bar").animate({
-      'width': a + "%"
-    }, 500);
-    $(".health-bar-blue").animate({
-      'width': a + "%"
-    }, 300);
-    $('.total').html(curHealth + "/" + maxHealth);
-  }
-    
-
 }
 
 ArenaCombatants.prototype = new Being(); 

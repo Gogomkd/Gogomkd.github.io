@@ -28,7 +28,7 @@ export function BloodElf (name){
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
         }, 500);
-        console.log(value, damage, hitWidth);
+        console.log(value, damage, barWidth);
         if (value < 0) {
             console.log("you dead, reset");
             return;
