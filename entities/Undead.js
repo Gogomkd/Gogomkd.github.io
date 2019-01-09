@@ -1,6 +1,6 @@
 export function Undead(name) {
     this.name = name;
-    this.health = 750;
+    this.health = 1750;
     this.minDamage = 140;
     this.maxDamage = 170;
     this.spell = getRandom(25, 35);
@@ -8,7 +8,7 @@ export function Undead(name) {
     this.type = "mage";
     this.attackSpeed = 1500;
     this.updateHealthBar = function(total, damage) {
-        var total = 750;
+        var total = 1750;
         var value = this.health;
        var hBar = $(".healthBar6")
        hBar.find(".healthBarP").html(value)
@@ -23,7 +23,9 @@ export function Undead(name) {
          var hitWidth = (damage / value) * 100 + "%";
          hit.css('width', hitWidth);
          hBar.data('value', newValue);
-         
+         if(value < 875){
+            bar.css("background", "#FA6600")
+        }
          setTimeout(function(){
              hit.css({'width': '0'});
              bar.css('width', barWidth + "%");

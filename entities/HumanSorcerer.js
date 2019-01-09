@@ -1,6 +1,6 @@
 export function HumanSorcerer (name){
     this.name = name;
-    this.health = 800;
+    this.health = 1800;
     this.minDamage = 100;
     this.maxDamage = 140;
     this.spell = getRandom(15,25);
@@ -8,7 +8,7 @@ export function HumanSorcerer (name){
     this.type = "mage";
     this.attackSpeed = 1400;
     this.updateHealthBar = function (total, damage) {
-        var total = 800;
+        var total = 1800;
         var value = this.health;
         var hBar = $('.healthBar2');
         hBar.find(".healthBarP").html(value)
@@ -25,7 +25,9 @@ export function HumanSorcerer (name){
         var hitWidth = (damage / value) * 100 + "%";
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
-        
+        if(value < 900){
+            bar.css("background", "#FA6600")
+        }
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");

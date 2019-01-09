@@ -1,6 +1,6 @@
 export function DwarfWarrior(name) {
     this.name = name;
-    this.health = 1200;
+    this.health = 1800;
     this.minDamage = 110;
     this.maxDamage = 140;
     this.block = getRandom(28,38);
@@ -8,7 +8,7 @@ export function DwarfWarrior(name) {
     this.armor = getRandom(5,8);
     this.attackSpeed = 1700;
     this.updateHealthBar = function (total, damage) {
-        var total = 1200;
+        var total = 1800;
         var value = this.health;
         var hBar = $('.healthBar3');
         hBar.find(".healthBarP").html(value)
@@ -25,7 +25,9 @@ export function DwarfWarrior(name) {
         var hitWidth = (damage / value) * 100 + "%";
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
-        
+        if(value < 900){
+            bar.css("background", "#FA6600")
+        }
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");

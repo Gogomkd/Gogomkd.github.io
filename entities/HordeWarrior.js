@@ -1,6 +1,6 @@
 export function OrcWarrior(name) {
     this.name = name;
-    this.health = 1300;
+    this.health = 2300;
     this.minDamage = 70;
     this.maxDamage = 110;
     this.block = getRandom(16, 26);
@@ -8,7 +8,7 @@ export function OrcWarrior(name) {
     this.type = "warrior";
     this.attackSpeed = 1800;
     this.updateHealthBar = function (total, damage) {
-        var total = 1300;
+        var total = 2300;
         var value = this.health;
         var hBar = $('.healthBar4');
         hBar.find(".healthBarP").html(value)
@@ -25,6 +25,9 @@ export function OrcWarrior(name) {
         var hitWidth = (damage / value) * 100 + "%";
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
+        if(value < 1150){
+            bar.css("background", "#FA6600")
+        }
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
