@@ -10,9 +10,10 @@ export function HumanSorcerer (name){
     this.updateHealthBar = function (total, damage) {
         var total = 800;
         var value = this.health;
-        var hBar = $('.healthBar3');
-        var bar = $('.bar3');
-        var hit = $('.hit3');
+        var hBar = $('.healthBar2');
+        hBar.find(".healthBarP").html(value)
+        var bar = $('.bar2');
+        var hit = $('.hit2');
 
         if (value < 0) {
             console.log("you dead, reset");
@@ -24,11 +25,12 @@ export function HumanSorcerer (name){
         var hitWidth = (damage / value) * 100 + "%";
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
+        
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
         }, 500);
-        console.log(value, damage, barWidth);
+        console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
         if (value < 0) {
             console.log("you dead, reset");
             return;

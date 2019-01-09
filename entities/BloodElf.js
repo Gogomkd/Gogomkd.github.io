@@ -11,6 +11,7 @@ export function BloodElf (name){
         var total = 900;
         var value = this.health;
         var hBar = $('.healthBar5');
+        hBar.find(".healthBarP").html(value)
         var bar = $('.bar5');
         var hit = $('.hit5');
 
@@ -24,11 +25,12 @@ export function BloodElf (name){
         var hitWidth = (damage / value) * 100 + "%";
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
+        
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
         }, 500);
-        console.log(value, damage, barWidth);
+        console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
         if (value < 0) {
             console.log("you dead, reset");
             return;

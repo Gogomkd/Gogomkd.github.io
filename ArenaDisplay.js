@@ -112,7 +112,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("healthBar1").appendTo(".allianceWarrior");
             $("<div>").addClass("bar1").appendTo(".healthBar1")
             $("<div>").addClass("hit1").appendTo(".bar1");
-            $("<p>").addClass("healthBarP").appendTo(".healthBar1");
+            $("<p>").addClass("healthBarP").html(this.arena.human.health).appendTo(".healthBar1");
     
             console.log(that.arena.human.health);
             console.log(event);
@@ -135,7 +135,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("healthBar2").appendTo(".allianceSorcerer");
             $("<div>").addClass("bar2").appendTo(".healthBar2");
             $("<div>").addClass("hit2").appendTo(".bar2");
-            $("<p>").addClass("healthBarP").appendTo(".healthBar2");
+            $("<p>").addClass("healthBarP").html(this.arena.humanMage.health).appendTo(".healthBar2");
 
             console.log(event);
             $("#button2").css("display", "none");
@@ -155,7 +155,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("healthBar3").appendTo(".allianceDwarf");
             $("<div>").addClass("bar3").appendTo(".healthBar3");
             $("<div>").addClass("hit3").appendTo(".bar3");
-            $("<p>").addClass("healthBarP").appendTo(".healthBar3");
+            $("<p>").addClass("healthBarP").html(this.arena.dwarf.health).appendTo(".healthBar3");
     
             console.log(event);
             $("#button3").css("display", "none");
@@ -177,7 +177,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("healthBar4").appendTo(".hordeWarrior");
             $("<div>").addClass("bar4").appendTo(".healthBar4");
             $("<div>").addClass("hit4").appendTo(".bar4");
-            $("<p>").addClass("healthBarP").appendTo(".healthBar4");
+            $("<p>").addClass("healthBarP").html(this.arena.orc.health).appendTo(".healthBar4");
 
         });
         $("<p>Choose</p>").addClass("btnText").appendTo(".button5");
@@ -194,7 +194,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("healthBar5").appendTo(".hordeBloodElf");
             $("<div>").addClass("bar5").appendTo(".healthBar5");
             $("<div>").addClass("hit5").appendTo(".bar5");
-            $("<p>").addClass("healthBarP").appendTo(".healthBar5");
+            $("<p>").addClass("healthBarP").html(this.arena.bloodElf.health).appendTo(".healthBar5");
     
             console.log(event);
             $("#button5").css("display", "none");
@@ -216,7 +216,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("healthBar6").appendTo(".hordeUndead");
             $("<div>").addClass("bar6").appendTo(".healthBar6");
             $("<div>").addClass("hit6").appendTo(".bar6");
-            $("<p>").addClass("healthBarP").appendTo(".healthBar6");
+            $("<p>").addClass("healthBarP").html(this.arena.undead.health).appendTo(".healthBar6");
     
             
         });

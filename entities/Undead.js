@@ -11,10 +11,9 @@ export function Undead(name) {
         var total = 750;
         var value = this.health;
        var hBar = $(".healthBar6")
+       hBar.find(".healthBarP").html(value)
          var bar = $('.bar6');
          var hit = $('.hit6');
-         hBar.data("total");
-         hBar.data("value");
          if (value < 0) {
              console.log("you dead, reset");
              return;
@@ -24,11 +23,12 @@ export function Undead(name) {
          var hitWidth = (damage / value) * 100 + "%";
          hit.css('width', hitWidth);
          hBar.data('value', newValue);
+         
          setTimeout(function(){
              hit.css({'width': '0'});
              bar.css('width', barWidth + "%");
            }, 500);
-           console.log(value, damage, barWidth);
+           console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
            if (value < 0) {
              console.log("you dead, reset");
              return;

@@ -11,6 +11,7 @@ export function DwarfWarrior(name) {
         var total = 1200;
         var value = this.health;
         var hBar = $('.healthBar3');
+        hBar.find(".healthBarP").html(value)
         var bar = $('.bar3');
         var hit = $('.hit3');
 
@@ -24,11 +25,13 @@ export function DwarfWarrior(name) {
         var hitWidth = (damage / value) * 100 + "%";
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
+        
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
         }, 500);
-        console.log(value, damage, barWidth);
+        console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
+      
         if (value < 0) {
             console.log("you dead, reset");
             return;

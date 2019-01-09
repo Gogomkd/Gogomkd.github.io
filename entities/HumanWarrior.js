@@ -11,6 +11,7 @@ export function HumanWarrior (name){
        var total = 1200;
        var value = this.health;
       var hBar = $(".healthBar1")
+      hBar.find(".healthBarP").html(value)
         var bar = $('.bar1');
         var hit = $('.hit1');
         hBar.data("total");
@@ -28,7 +29,7 @@ export function HumanWarrior (name){
             hit.css({'width': '0'});
             bar.css('width', barWidth + "%");
           }, 500);
-          console.log(value, damage, barWidth);
+          console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
           if (value < 0) {
             console.log("you dead, reset");
             return;

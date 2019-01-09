@@ -11,6 +11,7 @@ export function OrcWarrior(name) {
         var total = 1300;
         var value = this.health;
         var hBar = $('.healthBar4');
+        hBar.find(".healthBarP").html(value)
         var bar = $('.bar4');
         var hit = $('.hit4');
 
@@ -28,8 +29,8 @@ export function OrcWarrior(name) {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
         }, 500);
-        console.log(value, damage, barWidth);
-        if (value < 0) {
+        console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
+       if (value < 0) {
             console.log("you dead, reset");
             return;
 

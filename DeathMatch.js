@@ -61,23 +61,16 @@ export function DeathMatch() {
                             clearInterval(combo1);
                             clearInterval(combo2);
                         }
-                        this.updateHealthOfCombatants(tepac1.health);
-                    this.updateHealthOfCombatants(tepac2.health);
-                    
-                    
                    }, tepac1.attackSpeed);
-                //    tepac2.updateHealthBar2();
+               
                     var combo2 = await setInterval(() => {
                         tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.block - tepac1.armor));
-
                         if (!tepac1.isAlive) {
                             clearInterval(combo1);
                             clearInterval(combo2);
                         }
-                        this.updateHealthOfCombatants(tepac1);
-                    this.updateHealthOfCombatants(tepac2);
                     }, tepac2.attackSpeed);
-                    // tepac1.updateHealthBar1();
+                    
                     console.log("");
                     
                     return combo1, combo2;
@@ -87,24 +80,22 @@ export function DeathMatch() {
                 else if (tepac1.type === "mage" && tepac2.type === "warrior") {
                     var combo1 = await setInterval(() => {
                         tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) + tepac1.spell - tepac2.armor));
-                        if (!tepac1.isAlive || !tepac2.isAlive) {
+                        if (!tepac2.isAlive) {
                             clearInterval(combo1);
-                            // clearInterval(combo2);
+                            clearInterval(combo2);
                         }
-                        this.updateHealthOfCombatants(tepac1);
-                        this.updateHealthOfCombatants(tepac2);
+                        
                     }, tepac1.attackSpeed);
-                    // tepac2.updateHealthBar2();
+                    
                     var combo2 = await setInterval(() => {
                         tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.armor));
-                        if (!tepac1.isAlive || !tepac2.isAlive) {
+                        if (!tepac1.isAlive) {
                             clearInterval(combo2);
-                            // clearInterval(combo1);
+                            clearInterval(combo1);
                         }
-                        this.updateHealthOfCombatants(tepac1);
-                    this.updateHealthOfCombatants(tepac2);
+                        
                     }, tepac2.attackSpeed);
-                    // tepac1.updateHealthBar1();
+                    
                     console.log("");
                     return combo1, combo2;
                 }
@@ -113,24 +104,21 @@ export function DeathMatch() {
                 else if (tepac1.type === "warrior" && tepac2.type === "mage") {
                     var combo1 = await setInterval(() => {
                         tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) - tepac2.armor));
-                        if (!tepac1.isAlive || !tepac2.isAlive) {
+                        if (!tepac2.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
                         }
-                        this.updateHealthOfCombatants(tepac1);
-                    this.updateHealthOfCombatants(tepac2);
+                        
                      }, tepac1.attackSpeed);
-                    //  tepac2.updateHealthBar2();
+                   
                     var combo2 = await setInterval(() => {
                         tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.armor + tepac2.spell));
-                        if (!tepac1.isAlive || !tepac2.isAlive) {
+                        if (!tepac1.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
                         }
-                        this.updateHealthOfCombatants(tepac1);
-                    this.updateHealthOfCombatants(tepac2);
+                    
                     }, tepac2.attackSpeed);
-                    // tepac1.updateHealthBar1();
                     console.log("");
                     
                     return combo1, combo2;
