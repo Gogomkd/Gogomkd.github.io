@@ -1,12 +1,12 @@
 export function OrcWarrior(name) {
     this.name = name;
     this.health = 2300;
-    this.minDamage = 70;
-    this.maxDamage = 110;
+    this.minDamage = 100;
+    this.maxDamage = 150;
     this.block = getRandom(16, 26);
     this.armor = getRandom(4, 7);
     this.type = "warrior";
-    this.attackSpeed = 1800;       
+    this.attackSpeed = 2000;       
     this.updateHealthBar =  function (total, damage) {
         
         var total = 2300;
@@ -27,6 +27,10 @@ export function OrcWarrior(name) {
 
         var barWidth = (newValue / total) * 100;
         var hitWidth = (damage / value) * 100 + "%";
+        if(barWidth < 0){
+            barWidth = 0;
+            hitWidth = 0;
+        }
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
         if(value < 1150){

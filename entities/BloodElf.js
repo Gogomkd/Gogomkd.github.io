@@ -1,6 +1,6 @@
 export function BloodElf (name){
     this.name = name;
-    this.health = 1500;
+    this.health = 2000;
     this.minDamage = 120;
     this.maxDamage = 160;
     this.block = getRandom(30,40);
@@ -8,7 +8,7 @@ export function BloodElf (name){
     this.type = "warrior";
     this.attackSpeed = 2100;
     this.updateHealthBar = function (total, damage) {
-        var total = 1500;
+        var total = 2000;
         var value = this.health;
         var box = $(".flip-card-front5")
         var p = $("#damageP2")
@@ -27,6 +27,10 @@ export function BloodElf (name){
         var hitWidth = (damage / value) * 100 + "%";
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
+        if(barWidth < 0){
+            barWidth = 0;
+            hitWidth = 0;
+        }
         if(value < 750){
             bar.css("background", "#FA6600")
         }

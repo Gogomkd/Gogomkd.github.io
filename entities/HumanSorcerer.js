@@ -1,6 +1,6 @@
 export function HumanSorcerer (name){
     this.name = name;
-    this.health = 1800;
+    this.health = 2100;
     this.minDamage = 100;
     this.maxDamage = 140;
     this.spell = getRandom(15,25);
@@ -8,7 +8,7 @@ export function HumanSorcerer (name){
     this.type = "mage";
     this.attackSpeed = 2800;      
     this.updateHealthBar = function (total, damage) {
-        var total = 1800;
+        var total = 2100;
         var value = this.health;
         var box = $(".flip-card-front2")
         var p = $("#damageP1")
@@ -25,6 +25,10 @@ export function HumanSorcerer (name){
 
         var barWidth = (newValue / total) * 100;
         var hitWidth = (damage / value) * 100 + "%";
+        if(barWidth < 0){
+            barWidth = 0;
+            hitWidth = 0;
+        }
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
         if(value < 900){

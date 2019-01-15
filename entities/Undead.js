@@ -1,6 +1,6 @@
 export function Undead(name) {
     this.name = name;
-    this.health = 1750;
+    this.health = 1950;
     this.minDamage = 140;
     this.maxDamage = 170;
     this.spell = getRandom(25, 35);
@@ -8,7 +8,7 @@ export function Undead(name) {
     this.type = "mage";
     this.attackSpeed = 2900;
     this.updateHealthBar = function(total, damage) {
-        var total = 1750;
+        var total = 1950;
         var p = $("#damageP2")
         var value = this.health;
         var box = (".flip-card-front6")
@@ -23,6 +23,10 @@ export function Undead(name) {
          var newValue = value - damage;
          var barWidth = (newValue / total) * 100;
          var hitWidth = (damage / value) * 100 + "%";
+         if(barWidth < 0){
+            barWidth = 0;
+            hitWidth = 0;
+        }
          hit.css('width', hitWidth);
          hBar.data('value', newValue);
          if(value < 875){

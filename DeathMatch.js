@@ -43,12 +43,20 @@ export function DeathMatch() {
 
             if (!tepac1.isAlive || !tepac2.isAlive) {
                 if (!tepac1.isAlive) {
+                    var info1 = $("#info");
+                    info1.addClass("animated flash").css("color", "#007f00").html("WINNER")
+                    var info2 = $("#info1");
+                    info2.html("LOOSER").css("color", "#cc0000").addClass("animated flash")
                     console.log("Winner is ", tepac2.name + " with " + tepac2.health + " health left ");
                     // tepac2.health += 500;
                     console.log(tepac2.health);
 
 
                 } else {
+                    var info1 = $("#info1");
+                    info1.html("WINNER").css("color", "#007f00").addClass("animated flash")
+                    var info2 = $("#info");
+                    info2.html("LOOSER").css("color", "#cc0000").addClass("animated flash")
                     console.log("Winner is ", tepac1.name + " with " + tepac1.health + " health left ");
                     // tepac1.health += 500;
                     console.log(tepac1.health);

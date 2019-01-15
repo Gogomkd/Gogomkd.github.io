@@ -1,12 +1,12 @@
 export function HumanWarrior(name) {
     this.name = name;
     this.health = 2200;
-    this.minDamage = 60;
-    this.maxDamage = 100;
+    this.minDamage = 90;
+    this.maxDamage = 130;
     this.block = getRandom(20, 40);
     this.armor = getRandom(2, 7);
     this.type = "warrior";
-    this.attackSpeed = 1500;
+    this.attackSpeed = 1900;
     this.updateHealthBar =  function (total, damage) {
         
         var total = 2200;
@@ -19,6 +19,7 @@ export function HumanWarrior(name) {
         var hit = $('.hit1');
         hBar.data("total");
         hBar.data("value");
+        
         if (value < 0) {
             console.log("you dead, reset");
             
@@ -28,6 +29,10 @@ export function HumanWarrior(name) {
         var newValue = value - damage;
         var barWidth = (newValue / total) * 100;
         var hitWidth = (damage / value) * 100 + "%";
+        if(barWidth < 0){
+            barWidth = 0;
+            hitWidth = 0;
+        }
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
         if (value < 1100) {
