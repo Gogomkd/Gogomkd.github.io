@@ -10,6 +10,8 @@ export function BloodElf (name){
     this.updateHealthBar = function (total, damage) {
         var total = 1500;
         var value = this.health;
+        var box = $(".flip-card-front5")
+        var p = $("#damageP2")
         var hBar = $('.healthBar5');
         hBar.find(".healthBarP").html(value)
         var bar = $('.bar5');
@@ -31,7 +33,16 @@ export function BloodElf (name){
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
+            p.addClass("animated bounceInLeft").html("Feyvea hits "+ damage);
+       
         }, 500);
+        setTimeout(function () {
+            var animationName = "animated shake";
+            var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+                box.addClass(animationName).one(animationend,function() {
+                $(this).removeClass(animationName);
+            });
+        }, this.attackSpeed-200)
         console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
         if (value < 0) {
             console.log("you dead, reset");

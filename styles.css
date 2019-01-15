@@ -294,14 +294,12 @@ body {
   }
   
   .flip-card-front1 {
-    /* background-image: url(img/background3.png); */
     color: black;
     z-index: 2;
   }
   
   .flip-card-back1 {
     width:100%;
-    /* background-image: url(img/background.png); */
     color: white;
     transform: rotateY(180deg);
     z-index: 1;
@@ -337,14 +335,12 @@ body {
   }
   
   .flip-card-front2 {
-    /* background-image: url(img/background3.png); */
     color: black;
     z-index: 2;
   }
   
   .flip-card-back2 {
     width:100%;
-    /* background-image: url(img/background.png); */
     color: white;
     transform: rotateY(180deg);
     z-index: 1;
@@ -534,9 +530,25 @@ body {
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
-    align-self: center;
+    align-items: center;
     margin-left:50px;
   }
+  .fightLevo {
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-self: center;
+    margin-left:10px;
+  }
+  /* .fightDesno {
+    display:flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-self: center;
+    margin-top:140px;
+  } */
 /* 
 .fightButtons{
   width:400px;
@@ -551,9 +563,6 @@ body {
 .holder{
   display:flex;
   justify-content: space-between;
-  -moz-user-select: -moz-none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
   background: white;
   padding: 10px;
   width: 450px;
@@ -564,7 +573,7 @@ body {
   box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
   border-radius: 2px;
   grid-column:3/7;
-  grid-row:4/6;
+  grid-row:5/6;
 }
 .button {
   background: #3D4C53;
@@ -685,6 +694,24 @@ body {
   color: white;
   text-align: center;
 }
-
+#damageP2 {
+  width:90%;
+  height:30px;
+  color:white;
+  text-align: center;
+  font-size:20px;
+  align-content: center;
+  padding:0;
+}
+#damageP1 {
+  width:90%;
+  height:30px;
+  color:white;
+  order: 3;
+  text-align:center;
+  font-size:20px;
+  align-content: center;
+  padding:0;
+}
 
 

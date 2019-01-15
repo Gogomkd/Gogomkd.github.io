@@ -9,7 +9,7 @@ function ArenaCombatants() {
     this.receiveDamage = function (damage) {
         this.health -= damage;
         this.checkLife();
-        
+       
     }
 }
 
