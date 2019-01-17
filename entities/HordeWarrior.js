@@ -10,13 +10,13 @@ export function OrcWarrior(name) {
     this.updateHealthBar =  function (total, damage) {
         
         var total = 2300;
-        var p = $("#damageP2")
+        var p = $("#damageP1")
         var box = $(".flip-card-front4")
         var value = this.health;
         var hBar = $('.healthBar4');
         hBar.find(".healthBarP").html(value);
-        var fB = $(".fightLevo");
-        fB.find("#damageP2").html("Thrall hits "+ damage)
+        var fB = $(".fightDesno");
+        fB.find("#damageP1").html("Thrall is hit for "+ damage)
         setTimeout(function(){
             var animationName = "heartBeat";
             var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";

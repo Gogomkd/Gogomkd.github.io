@@ -10,9 +10,9 @@ export function HumanWarrior(name) {
     this.updateHealthBar =  function (total, damage) {
         
         var total = 2200;
-        var p = $("#damageP1")
-        var fB = $(".fightDesno");
-        fB.find("#damageP1").html("Varian hits "+ damage)
+        var p = $("#damageP2")
+        var fB = $(".fightLevo");
+        fB.find("#damageP2").html("Varian is hit for "+ damage)
         var box = $(".flip-card-front1")
         var value = this.health;
         var hBar = $(".healthBar1")

@@ -9,9 +9,9 @@ export function DwarfWarrior(name) {
     this.attackSpeed = 1700;
     this.updateHealthBar = function (total, damage) {
         var total = 1900;
-        var p = $("#damageP1")
-        var fB = $(".fightDesno");
-        fB.find("#damageP1").html("Brann hits "+ damage)
+        var p = $("#damageP2")
+        var fB = $(".fightLevo");
+        fB.find("#damageP2").html("Brann is hit for "+ damage)
         var value = this.health;
         var box = $(".flip-card-front3")
         var hBar = $('.healthBar3');
@@ -32,7 +32,7 @@ export function DwarfWarrior(name) {
             return;
         }
         var newValue = value - damage;
-
+        
         var barWidth = (newValue / total) * 100;
         var hitWidth = (damage / value) * 100 + "%";
         if(barWidth < 0){

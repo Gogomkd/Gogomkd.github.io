@@ -9,11 +9,11 @@ export function Undead(name) {
     this.attackSpeed = 2900;
     this.updateHealthBar = function(total, damage) {
         var total = 1950;
-        var p = $("#damageP2")
-        var fB = $(".fightLevo");
-        fB.find("#damageP2").html("Talbot hits "+ damage)
+        var p = $("#damageP1")
+        var fB = $(".fightDesno");
+        fB.find("#damageP1").html("Talbot is hit for "+ damage)
         var value = this.health;
-        var box = (".flip-card-front6")
+        var box = $(".flip-card-front6")
        var hBar = $(".healthBar6")
        hBar.find(".healthBarP").html(value)
        setTimeout(function(){
@@ -42,13 +42,12 @@ export function Undead(name) {
          if(value < 875){
             bar.css("background", "#FA6600")
         }
+
          setTimeout(function(){
              hit.css({'width': '0'});
              bar.css('width', barWidth + "%");
-             
-       
            }, 500);
-           
+
            setTimeout(function () {
             var animationName = "animated shake";
             var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
@@ -56,6 +55,7 @@ export function Undead(name) {
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed-200)
+
            console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
            if (value < 0) {
              console.log("you dead, reset");

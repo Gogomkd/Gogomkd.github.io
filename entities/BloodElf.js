@@ -11,11 +11,11 @@ export function BloodElf (name){
         var total = 2000;
         var value = this.health;
         var box = $(".flip-card-front5")
-        var p = $("#damageP2")
+        var p = $("#damageP1")
         var hBar = $('.healthBar5');
         hBar.find(".healthBarP").html(value);
-        var fB = $(".fightLevo");
-        fB.find("#damageP2").html("Feyvea hits "+ damage)
+        var fB = $(".fightDesno");
+        fB.find("#damageP1").html("Feyvea is hit for "+ damage)
         setTimeout(function(){
             var animationName = "heartBeat";
             var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";

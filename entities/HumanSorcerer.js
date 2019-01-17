@@ -11,9 +11,9 @@ export function HumanSorcerer (name){
         var total = 2100;
         var value = this.health;
         var box = $(".flip-card-front2")
-        var p = $("#damageP1")
-        var fB = $(".fightDesno");
-        fB.find("#damageP1").html("Janna hits "+ damage)
+        var p = $("#damageP2")
+        var fB = $(".fightLevo");
+        fB.find("#damageP2").html("Janna is hit for "+ damage)
         var hBar = $('.healthBar2');
         hBar.find(".healthBarP").html(value)
         setTimeout(function(){
