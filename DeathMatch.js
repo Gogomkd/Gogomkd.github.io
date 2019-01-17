@@ -49,7 +49,6 @@ export function DeathMatch() {
             if (tepac1.isAlive && tepac2.isAlive) {
                 if (tepac1.type === "warrior" && tepac2.type === "warrior") {
                     var combo1 = await setInterval(() => {
-                        tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) - tepac2.block - tepac2.armor))
                         if (!tepac2.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
@@ -59,17 +58,31 @@ export function DeathMatch() {
                             info1.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
                             return
                         }
+                        if(tepac2.isBlocking){
+                            tepac1.attack(tepac2, 0)
+                        }else {
+                        tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) - tepac2.block - tepac2.armor))
+                      
+                    }
+                    }, tepac1.attackSpeed);
+                
+                        var combo2 = await setInterval(() => {
+                            if (!tepac1.isAlive) {
+                                clearInterval(combo1);
+                                clearInterval(combo2);
+                                var info = $("#info")
+                                var info1 = $("#info1")
+                                info1.css("color", "#007f00").html("VICTORY").addClass("animated flash");
+                                info.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
+    
+                                return
+                            }
+                            if(tepac1.isBlocking){
+                                tepac2.attack(tepac1, 0);
+                            }else{
                         tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.block - tepac1.armor));
-                        if (!tepac1.isAlive) {
-                            clearInterval(combo1);
-                            clearInterval(combo2);
-                            var info = $("#info")
-                            var info1 = $("#info1")
-                            info1.css("color", "#007f00").html("VICTORY").addClass("animated flash");
-                            info.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
-
-                            return
-                        }
+                        
+                    }
                     }, tepac2.attackSpeed);
 
                     console.log("");
@@ -79,7 +92,6 @@ export function DeathMatch() {
 
                 if (tepac1.type === "warrior" && tepac2.type === "mage") {
                     var combo1 = await setInterval(() => {
-                        tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) - tepac2.armor));
                         if (!tepac2.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
@@ -89,9 +101,17 @@ export function DeathMatch() {
                             info1.addClass("animated flash").css("color", "#cc0000").html("DEFEAT").addClass("animated flash")
                             return
                         }
+                        tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) - tepac2.armor));
+                       
                     }, tepac1.attackSpeed);
 
                     var combo2 = await setInterval(() => {
+                        if(tepac1.reflect){
+                            tepac2.attack(tepac1, 0);
+                        }
+                        else if(tepac2.isCritical){
+                            tepac2.attack(tepac1, (getRandom(tepac2.minDamage + 90, tepac2.maxDamage + 60)))
+                        }else {
                         tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.armor + tepac2.spell));
                         if (!tepac1.isAlive) {
                             clearInterval(combo1);
@@ -103,6 +123,7 @@ export function DeathMatch() {
 
                             return
                         }
+                    }
                     }, tepac2.attackSpeed);
 
                     console.log("");
@@ -112,7 +133,6 @@ export function DeathMatch() {
 
                 else if (tepac1.type === "mage" && tepac2.type === "warrior") {
                     var combo1 = await setInterval(() => {
-                        tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) + tepac1.spell - tepac2.armor));
                         if (!tepac2.isAlive) {
                             clearInterval(combo1);
                             clearInterval(combo2);
@@ -122,11 +142,19 @@ export function DeathMatch() {
                             info1.style.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
                             return
                         }
-
+                        if(tepac2.reflect){
+                            tepac1.attack(tepac2, 0);
+                        }
+                        else if(tepac1.isCritical){
+                            tepac1.attack(tepac2, getRandom(tepac1.minDamage + 90, tepac1.maxDamage + 60));
+                        }
+                        else {
+                        tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) + tepac1.spell - tepac2.armor));
+                        
+                    }
                     }, tepac1.attackSpeed);
 
                     var combo2 = await setInterval(() => {
-                        tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.armor));
                         if (!tepac1.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
@@ -136,6 +164,8 @@ export function DeathMatch() {
                             info.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
                             return
                         }
+                        tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.armor));
+                        
 
                     }, tepac2.attackSpeed);
 
@@ -146,20 +176,25 @@ export function DeathMatch() {
 
                 else if (tepac1.type === "mage" && tepac2.type === "mage") {
                     var combo1 = await setInterval(() => {
-                        tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) - tepac2.armor + tepac1.spell));
                         if (!tepac2.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
                             var info = $("#info")
                             var info1 = $("#info1")
                             info.css("color", "#007f00").html("VICTORY").addClass("animated flash");
-                            info1.style.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
+                            info1.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
                         }
-
+                        if(tepac2.isSpellBlock){
+                            tepac1.attack(tepac2, 0)
+                        }else if(tepac1.isCritical){
+                            tepac1.attack(tepac2, getRandom(tepac1.minDamage +90, tepac1.maxDamage + 60))
+                        }else {
+                        tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) - tepac2.armor + tepac1.spell));
+                       
+                    }
                     }, tepac1.attackSpeed);
 
                     var combo2 = await setInterval(() => {
-                        tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.armor + tepac2.spell));
                         if (!tepac1.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
@@ -168,7 +203,14 @@ export function DeathMatch() {
                             info1.css("color", "#007f00").html("VICTORY").addClass("animated flash");
                             info.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
                         }
-
+                        if(tepac1.isSpellBlock){
+                            tepac2.attack(tepac1, 0)
+                        }else if(tepac2.isCritical){
+                            tepac2.attack(tepac1, getRandom(tepac2.minDamage + 90, tepac2.maxDamage + 60));
+                        }else{
+                        tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.armor + tepac2.spell));
+                       
+                    }
                     }, tepac2.attackSpeed);
                     console.log("");
 

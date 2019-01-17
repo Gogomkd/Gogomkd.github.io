@@ -1,8 +1,8 @@
 export function DwarfWarrior(name) {
     this.name = name;
     this.health = 1900;
-    this.minDamage = 110;
-    this.maxDamage = 140;
+    this.minDamage = 130;
+    this.maxDamage = 170;
     this.block = getRandom(28,38);
     this.type = "warrior";
     this.armor = getRandom(5,8);
@@ -11,7 +11,7 @@ export function DwarfWarrior(name) {
         var total = 1900;
         var p = $("#damageP2")
         var fB = $(".fightLevo");
-        fB.find("#damageP2").html("Brann is hit for "+ damage)
+        
         var value = this.health;
         var box = $(".flip-card-front3")
         var hBar = $('.healthBar3');
@@ -27,10 +27,6 @@ export function DwarfWarrior(name) {
         var bar = $('.bar3');
         var hit = $('.hit3');
 
-        if (value < 0) {
-            console.log("you dead, reset");
-            return;
-        }
         var newValue = value - damage;
         
         var barWidth = (newValue / total) * 100;
@@ -41,14 +37,25 @@ export function DwarfWarrior(name) {
         }
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
-        if(value < 900){
+        if(value < 950){
             bar.css("background", "#FA6600")
         }
         setTimeout(function () {
-            hit.css({ 'width': '0' });
-            bar.css('width', barWidth + "%");
-           
-      
+            if (damage > 0 && damage < 200) {
+                fB.find("#damageP2").html("Brann takes " + damage+ " dmg")
+                hit.css({ 'width': '0' }); 
+                bar.css('width', barWidth + "%");
+            } else if(damage > 200){
+                fB.find("#damageP2").html("Brann takes crit " + damage)
+                hit.css({ 'width': '0' });
+                bar.css('width', barWidth + "%");
+            }
+            else{
+                hitWidth = 0;
+                barWidth = 0;
+                fB.find("#damageP2").html("Brann blocked");
+        
+            }
         }, 500);
         
         setTimeout(function () {
@@ -58,13 +65,7 @@ export function DwarfWarrior(name) {
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed-200)
-        console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
-      
-        if (value < 0) {
-            console.log("you dead, reset");
-            return;
 
-        }
     }
 }
 

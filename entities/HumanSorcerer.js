@@ -1,8 +1,8 @@
 export function HumanSorcerer (name){
     this.name = name;
     this.health = 2100;
-    this.minDamage = 100;
-    this.maxDamage = 140;
+    this.minDamage = 110;
+    this.maxDamage = 190;
     this.spell = getRandom(15,25);
     this.armor = getRandom(1,4);
     this.type = "mage";
@@ -13,7 +13,7 @@ export function HumanSorcerer (name){
         var box = $(".flip-card-front2")
         var p = $("#damageP2")
         var fB = $(".fightLevo");
-        fB.find("#damageP2").html("Janna is hit for "+ damage)
+        
         var hBar = $('.healthBar2');
         hBar.find(".healthBarP").html(value)
         setTimeout(function(){
@@ -26,11 +26,7 @@ export function HumanSorcerer (name){
         }, this.attackSpeed - 200)
         var bar = $('.bar2');
         var hit = $('.hit2');
-
-        if (value < 0) {
-            console.log("you dead, reset");
-            return;
-        }
+   
         var newValue = value - damage;
 
         var barWidth = (newValue / total) * 100;
@@ -46,10 +42,23 @@ export function HumanSorcerer (name){
             
         }
         setTimeout(function () {
-            hit.css({ 'width': '0' });
-            bar.css('width', barWidth + "%");
+            if (damage > 0 && damage < 200) {
+                fB.find("#damageP2").html("Janna takes " + damage+ " dmg")
+                hit.css({ 'width': '0' }); 
+                bar.css('width', barWidth + "%");
+            } else if(damage > 200){
+                fB.find("#damageP2").html("Janna takes crit " + damage)
+                hit.css({ 'width': '0' });
+                bar.css('width', barWidth + "%");
+            }
+            else{
+                hitWidth = 0;
+                barWidth = 0;
+                fB.find("#damageP2").html("Janna blocked");
+        
+            }
             
-      
+            
         }, 500);
         
         setTimeout(function () {
@@ -59,12 +68,7 @@ export function HumanSorcerer (name){
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed-200)
-        console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
-        if (value < 0) {
-            console.log("you dead, reset");
-            return;
-
-        }
+      
     }
 }
 

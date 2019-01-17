@@ -1,8 +1,8 @@
 export function BloodElf (name){
     this.name = name;
     this.health = 2000;
-    this.minDamage = 120;
-    this.maxDamage = 160;
+    this.minDamage = 130;
+    this.maxDamage = 180;
     this.block = getRandom(30,40);
     this.armor = getRandom(3,6);
     this.type = "warrior";
@@ -12,10 +12,12 @@ export function BloodElf (name){
         var value = this.health;
         var box = $(".flip-card-front5")
         var p = $("#damageP1")
+        var fB = $(".fightDesno");
+       
         var hBar = $('.healthBar5');
         hBar.find(".healthBarP").html(value);
-        var fB = $(".fightDesno");
-        fB.find("#damageP1").html("Feyvea is hit for "+ damage)
+        
+        
         setTimeout(function(){
             var animationName = "heartBeat";
             var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
@@ -26,10 +28,10 @@ export function BloodElf (name){
         }, this.attackSpeed - 200)
         var bar = $('.bar5');
         var hit = $('.hit5');
-
-        if (value < 0) {
-            console.log("you dead, reset");
-            return;
+        if(value < 0){
+            console.log("dead");
+            return
+            
         }
         var newValue = value - damage;
 
@@ -41,15 +43,26 @@ export function BloodElf (name){
             barWidth = 0;
             hitWidth = 0;
         }
-        if(value < 750){
+        if(value < 1000){
             bar.css("background", "#FA6600")
             
         }
         setTimeout(function () {
-            hit.css({ 'width': '0' });
-            bar.css('width', barWidth + "%");
-           
-       
+            if (damage > 0 && damage < 200) {
+                fB.find("#damageP1").html("Feyvea takes " + damage+ " dmg")
+                hit.css({ 'width': '0' }); 
+                bar.css('width', barWidth + "%");
+            } else if(damage > 200){
+                fB.find("#damageP1").html("Feyvea takes crit " + damage)
+                hit.css({ 'width': '0' });
+                bar.css('width', barWidth + "%");
+            }
+            else{
+                hitWidth = 0;
+                barWidth = 0;
+                fB.find("#damageP1").html("Feyvea blocked");
+        
+            }
         }, 500);
         
         setTimeout(function () {
@@ -59,12 +72,7 @@ export function BloodElf (name){
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed-200)
-        console.log("curent health "+value+ " damage dealth " +damage+ " percentage of health left "+barWidth);
-        if (value < 0) {
-            console.log("you dead, reset");
-            return;
-
-        }
+  
     }
 }
 

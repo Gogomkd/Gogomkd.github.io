@@ -62,8 +62,9 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("flip-card-back6").appendTo(".flip-card-inner6");
         $(".flip-card-back6").prepend("<p>Health:" + this.arena.undead.health + "</br>Armor:" + this.arena.undead.armor + "</br>Spell:" + this.arena.undead.spell + "</p>").prepend("<h2>" + this.arena.undead.name + "</h2>"); //visual code fighter 6 end
 
-
+        
         $("<div>").addClass("fightContainer").appendTo(".mainContainer");///fithing space code
+        $("<p></p>").attr("id", "#damageP").appendTo(".fightContainer")
         $("<div>").addClass("fightLevo").appendTo(".fightContainer");
         $("<div>").addClass("fightDesno").appendTo(".fightContainer");
         $("<p>").attr("id", "damageP1").appendTo(".fightDesno");
