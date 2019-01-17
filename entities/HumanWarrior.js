@@ -11,10 +11,20 @@ export function HumanWarrior(name) {
         
         var total = 2200;
         var p = $("#damageP1")
+        var fB = $(".fightDesno");
+        fB.find("#damageP1").html("Varian hits "+ damage)
         var box = $(".flip-card-front1")
         var value = this.health;
         var hBar = $(".healthBar1")
         hBar.find(".healthBarP").html(value)
+        setTimeout(function(){
+            var animationName = "heartBeat";
+            var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+                hBar.find(".healthBarP").addClass(animationName).one(animationend,function() {
+                $(this).removeClass(animationName);
+            });
+        
+        }, this.attackSpeed - 200)
         var bar = $('.bar1');
         var hit = $('.hit1');
         hBar.data("total");
@@ -41,9 +51,10 @@ export function HumanWarrior(name) {
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
-            p.addClass("animated bounceInRight").html("Varian hits " + damage);
+            
             
         }, 500);
+        
         setTimeout(function () {
             var animationName = "animated shake";
             var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";

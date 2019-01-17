@@ -14,7 +14,17 @@ export function OrcWarrior(name) {
         var box = $(".flip-card-front4")
         var value = this.health;
         var hBar = $('.healthBar4');
-        hBar.find(".healthBarP").html(value)
+        hBar.find(".healthBarP").html(value);
+        var fB = $(".fightLevo");
+        fB.find("#damageP2").html("Thrall hits "+ damage)
+        setTimeout(function(){
+            var animationName = "heartBeat";
+            var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+                hBar.find(".healthBarP").addClass(animationName).one(animationend,function() {
+                $(this).removeClass(animationName);
+            });
+        
+        }, this.attackSpeed - 200);
         var bar = $('.bar4');
         var hit = $('.hit4');
 
@@ -35,13 +45,15 @@ export function OrcWarrior(name) {
         hBar.data('value', newValue);
         if(value < 1150){
             bar.css("background", "#FA6600")
+            
         }
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
-            p.addClass("animated bounceInLeft").html("Thrall hits "+ damage);
+            
             
         }, 500);
+        
         setTimeout(function () {
             var animationName = "animated shake";
             var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";

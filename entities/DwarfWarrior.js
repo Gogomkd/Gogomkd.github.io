@@ -10,10 +10,20 @@ export function DwarfWarrior(name) {
     this.updateHealthBar = function (total, damage) {
         var total = 1900;
         var p = $("#damageP1")
+        var fB = $(".fightDesno");
+        fB.find("#damageP1").html("Brann hits "+ damage)
         var value = this.health;
         var box = $(".flip-card-front3")
         var hBar = $('.healthBar3');
         hBar.find(".healthBarP").html(value)
+        setTimeout(function(){
+            var animationName = "heartBeat";
+            var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+                hBar.find(".healthBarP").addClass(animationName).one(animationend,function() {
+                $(this).removeClass(animationName);
+            });
+        
+        }, this.attackSpeed - 200)
         var bar = $('.bar3');
         var hit = $('.hit3');
 
@@ -37,9 +47,10 @@ export function DwarfWarrior(name) {
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
-            p.addClass("animated bounceInRight").html("Brann hits "+ damage);
+           
       
         }, 500);
+        
         setTimeout(function () {
             var animationName = "animated shake";
             var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";

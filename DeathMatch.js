@@ -27,55 +27,40 @@ export function DeathMatch() {
         }
         if (this.hordeCombatant.length === 0 && this.humanCombatant.length === 0) {
             console.log("Choose your figthers");
-        } else if (this.humanCombatant.length > 1) {
+        } else if (this.humanCombatant.length > 1 || this.hordeCombatant.length > 1) {
             console.log("Cant select allies to fight");
 
-        } else if (this.hordeCombatant.length > 1) {
-            console.log("Cant select allies to fight");
+        } else if ((this.hordeCombatant.length > 1 && this.humanCombatant.length === 1) || this.hordeCombatant.length === 1 && this.humanCombatant.length > 1) {
+            console.log("Unfair Fight");
         } else if (this.hordeCombatant.length === 0 && this.humanCombatant.length > 0 || this.hordeCombatant.length > 0 && this.humanCombatant.length === 0) {
             console.log("Choose opponent");
         }
 
 
         if (this.hordeCombatant.length != 0 && this.humanCombatant.length != 0) {
-
-
-
-            if (!tepac1.isAlive || !tepac2.isAlive) {
-                if (!tepac1.isAlive) {
-                    var info1 = $("#info");
-                    info1.addClass("animated flash").css("color", "#007f00").html("WINNER")
-                    var info2 = $("#info1");
-                    info2.html("LOOSER").css("color", "#cc0000").addClass("animated flash")
-                    console.log("Winner is ", tepac2.name + " with " + tepac2.health + " health left ");
-                    // tepac2.health += 500;
-                    console.log(tepac2.health);
-
-
-                } else {
-                    var info1 = $("#info1");
-                    info1.html("WINNER").css("color", "#007f00").addClass("animated flash")
-                    var info2 = $("#info");
-                    info2.html("LOOSER").css("color", "#cc0000").addClass("animated flash")
-                    console.log("Winner is ", tepac1.name + " with " + tepac1.health + " health left ");
-                    // tepac1.health += 500;
-                    console.log(tepac1.health);
-                }
-                return true;
-            }
-            else if (tepac1.isAlive && tepac2.isAlive) {
+            if (tepac1.isAlive && tepac2.isAlive) {
                 if (tepac1.type === "warrior" && tepac2.type === "warrior") {
                     var combo1 = await setInterval(() => {
                         tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) - tepac2.block - tepac2.armor))
                         if (!tepac2.isAlive) {
-                            
-                            clearInterval(combo1);
                             clearInterval(combo2);
+                            clearInterval(combo1);
+                            var info = $("#info")
+                            var info1 = $("#info1")
+                            info.css("color", "#007f00").html("VICTORY").addClass("animated flash");
+                            info1.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
+                            return
                         }
                         tepac2.attack(tepac1, (getRandom(tepac2.minDamage, tepac2.maxDamage) - tepac1.block - tepac1.armor));
                         if (!tepac1.isAlive) {
                             clearInterval(combo1);
                             clearInterval(combo2);
+                            var info = $("#info")
+                            var info1 = $("#info1")
+                            info1.css("color", "#007f00").html("VICTORY").addClass("animated flash");
+                            info.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
+
+                            return
                         }
                     }, tepac2.attackSpeed);
 
@@ -88,8 +73,13 @@ export function DeathMatch() {
                     var combo1 = await setInterval(() => {
                         tepac1.attack(tepac2, (getRandom(tepac1.minDamage, tepac1.maxDamage) - tepac2.armor));
                         if (!tepac2.isAlive) {
-                            clearInterval(combo1);
                             clearInterval(combo2);
+                            clearInterval(combo1);
+                            var info = $("#info")
+                            var info1 = $("#info1")
+                            info.addClass("animated flash").css("color", "#007f00").html("VICTORY").addClass("animated flash")
+                            info1.addClass("animated flash").css("color", "#cc0000").html("DEFEAT").addClass("animated flash")
+                            return
                         }
                     }, tepac1.attackSpeed);
 
@@ -98,6 +88,12 @@ export function DeathMatch() {
                         if (!tepac1.isAlive) {
                             clearInterval(combo1);
                             clearInterval(combo2);
+                            var info = $("#info")
+                            var info1 = $("#info1")
+                            info1.css("color", "#007f00").html("VICTORY").addClass("animated flash");
+                            info.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
+
+                            return
                         }
                     }, tepac2.attackSpeed);
 
@@ -112,6 +108,11 @@ export function DeathMatch() {
                         if (!tepac2.isAlive) {
                             clearInterval(combo1);
                             clearInterval(combo2);
+                            var info = $("#info")
+                            var info1 = $("#info1")
+                            info.css("color", "#007f00").html("VICTORY").addClass("animated flash");
+                            info1.style.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
+                            return
                         }
 
                     }, tepac1.attackSpeed);
@@ -121,6 +122,11 @@ export function DeathMatch() {
                         if (!tepac1.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
+                            var info = $("#info")
+                            var info1 = $("#info1")
+                            info1.css("color", "#007f00").html("VICTORY").addClass("animated flash");
+                            info.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
+                            return
                         }
 
                     }, tepac2.attackSpeed);
@@ -136,6 +142,10 @@ export function DeathMatch() {
                         if (!tepac2.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
+                            var info = $("#info")
+                            var info1 = $("#info1")
+                            info.css("color", "#007f00").html("VICTORY").addClass("animated flash");
+                            info1.style.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
                         }
 
                     }, tepac1.attackSpeed);
@@ -145,6 +155,10 @@ export function DeathMatch() {
                         if (!tepac1.isAlive) {
                             clearInterval(combo2);
                             clearInterval(combo1);
+                            var info = $("#info")
+                            var info1 = $("#info1")
+                            info1.css("color", "#007f00").html("VICTORY").addClass("animated flash");
+                            info.css("color", "#cc0000").html("DEFEAT").addClass("animated flash");
                         }
 
                     }, tepac2.attackSpeed);

@@ -66,13 +66,13 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("fightContainer").appendTo(".mainContainer");///fithing space code
         $("<div>").addClass("fightLevo").appendTo(".fightContainer");
         $("<div>").addClass("fightDesno").appendTo(".fightContainer");
-        $("<p>").attr("id", "damageP1").appendTo(".fightDesno")
-        $("<span>").attr("id", "info").appendTo(".fightContainer")
-        $("<p>").attr("id", "damageP2").appendTo(".fightLevo")
-        $("<span>").attr("id", "info1").appendTo(".fightContainer")
-        $("<div>").addClass("healthBar1");
-        $("<div>").addClass("bar");
-        $("<div>").addClass("hit");
+        $("<p>").attr("id", "damageP1").appendTo(".fightDesno");
+        $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
+        $("<p></p>").attr("id", "info").appendTo(".mainContainer")
+        $("<p>").attr("id", "damageP2").appendTo(".fightLevo");
+        
+
+        
         $("<div>").addClass("holder").css("visibility", "hidden", "margin-top", "130").appendTo(".mainContainer")//fithing space code end
 
         //Arena Fight Start Button
@@ -86,7 +86,7 @@ export function ArenaLook(arenaName) {
             var result = await this.arena.fight();
             event = result;
             // console.log(event);
-
+         
         });
         $("<p>Ready</p>").addClass("btnText").appendTo(".button");
         $("<div>").addClass("btnTwo").appendTo(".button");
@@ -113,8 +113,8 @@ export function ArenaLook(arenaName) {
 
 
             var that = this;
-            $(".button").css("visibility", "visible");
-            $(".button1").css("visibility", "visible");
+            $(".button").css("visibility", "visible");//fight button
+            $(".button1").css("visibility", "visible");///reset button
             $("<div>").addClass("healthBar1").appendTo(".allianceWarrior");
             $("<div>").addClass("bar1").appendTo(".healthBar1")
             $("<div>").addClass("hit1").appendTo(".bar1");
@@ -122,7 +122,7 @@ export function ArenaLook(arenaName) {
     
             console.log(that.arena.human.health);
             console.log(event);
-            $("#button1").css("display", "none");
+            $("#button1").css("display", "none");///choose button for fighter to be hidden
 
         });
         $("<p>Choose</p>").addClass("btnText").appendTo(".button2");
@@ -135,8 +135,8 @@ export function ArenaLook(arenaName) {
         $("<button>").addClass("button3").attr("id", "button2").appendTo(".allianceSorcerer").on("click", (event) => {
             event = this.arena.getHumanSorcerer();
             var that = this;
-            $(".button").css("visibility", "visible");
-            $(".button1").css("visibility", "visible");
+            $(".button").css("visibility", "visible");//fight button
+            $(".button1").css("visibility", "visible");//reset button
             $(".allianceSorcerer").css("margin", "0").appendTo(".fightLevo");
             $("<div>").addClass("healthBar2").appendTo(".allianceSorcerer");
             $("<div>").addClass("bar2").appendTo(".healthBar2");
@@ -144,7 +144,7 @@ export function ArenaLook(arenaName) {
             $("<p>").addClass("healthBarP").html(this.arena.humanMage.health).appendTo(".healthBar2");
 
             console.log(event);
-            $("#button2").css("display", "none");
+            $("#button2").css("display", "none");///choose button for fighter to be hidden
             
         });
         $("<p>Choose</p>").addClass("btnText").appendTo(".button3");

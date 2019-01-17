@@ -10,10 +10,20 @@ export function Undead(name) {
     this.updateHealthBar = function(total, damage) {
         var total = 1950;
         var p = $("#damageP2")
+        var fB = $(".fightLevo");
+        fB.find("#damageP2").html("Talbot hits "+ damage)
         var value = this.health;
         var box = (".flip-card-front6")
        var hBar = $(".healthBar6")
        hBar.find(".healthBarP").html(value)
+       setTimeout(function(){
+        var animationName = "heartBeat";
+        var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+            hBar.find(".healthBarP").addClass(animationName).one(animationend,function() {
+            $(this).removeClass(animationName);
+        });
+    
+    }, this.attackSpeed - 200)
          var bar = $('.bar6');
          var hit = $('.hit6');
          if (value < 0) {
@@ -35,9 +45,10 @@ export function Undead(name) {
          setTimeout(function(){
              hit.css({'width': '0'});
              bar.css('width', barWidth + "%");
-             p.addClass("animated bounceInLeft").html("Talbot hits "+ damage);
+             
        
            }, 500);
+           
            setTimeout(function () {
             var animationName = "animated shake";
             var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";

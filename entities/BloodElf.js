@@ -13,7 +13,17 @@ export function BloodElf (name){
         var box = $(".flip-card-front5")
         var p = $("#damageP2")
         var hBar = $('.healthBar5');
-        hBar.find(".healthBarP").html(value)
+        hBar.find(".healthBarP").html(value);
+        var fB = $(".fightLevo");
+        fB.find("#damageP2").html("Feyvea hits "+ damage)
+        setTimeout(function(){
+            var animationName = "heartBeat";
+            var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+                hBar.find(".healthBarP").addClass(animationName).one(animationend,function() {
+                $(this).removeClass(animationName);
+            });
+        
+        }, this.attackSpeed - 200)
         var bar = $('.bar5');
         var hit = $('.hit5');
 
@@ -33,13 +43,15 @@ export function BloodElf (name){
         }
         if(value < 750){
             bar.css("background", "#FA6600")
+            
         }
         setTimeout(function () {
             hit.css({ 'width': '0' });
             bar.css('width', barWidth + "%");
-            p.addClass("animated bounceInLeft").html("Feyvea hits "+ damage);
+           
        
         }, 500);
+        
         setTimeout(function () {
             var animationName = "animated shake";
             var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
