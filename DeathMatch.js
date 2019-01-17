@@ -26,18 +26,26 @@ export function DeathMatch() {
             }
         }
         if (this.hordeCombatant.length === 0 && this.humanCombatant.length === 0) {
-            console.log("Choose your figthers");
-        } else if (this.humanCombatant.length > 1 || this.hordeCombatant.length > 1) {
+            console.log("Choose your FIGHTERS");
+            var info = $("#info")
+            info.css("color", "#007f00").addClass("animated flash").html("CHOOSE YOUR FIGHTERS")
+        } else if (this.humanCombatant.length >=  2 || this.hordeCombatant.length >= 2) {
             console.log("Cant select allies to fight");
-
+            var info = $("#info");
+            info.css("color", "#cc0000").html("Cant select allies to fight").addClass("animated flash")
         } else if ((this.hordeCombatant.length > 1 && this.humanCombatant.length === 1) || this.hordeCombatant.length === 1 && this.humanCombatant.length > 1) {
             console.log("Unfair Fight");
+            var info = $("#info");
+            info.css("color", "#cc0000").html("Unfair Fight").addClass("animated flash")
         } else if (this.hordeCombatant.length === 0 && this.humanCombatant.length > 0 || this.hordeCombatant.length > 0 && this.humanCombatant.length === 0) {
             console.log("Choose opponent");
+            var info = $("#info");
+            info.css("color", "#007f00").html("You have to choose opponent").addClass("animated flash")
+            
         }
 
 
-        if (this.hordeCombatant.length != 0 && this.humanCombatant.length != 0) {
+        if ((this.hordeCombatant.length === 1 && this.humanCombatant.length === 1)) {
             if (tepac1.isAlive && tepac2.isAlive) {
                 if (tepac1.type === "warrior" && tepac2.type === "warrior") {
                     var combo1 = await setInterval(() => {
