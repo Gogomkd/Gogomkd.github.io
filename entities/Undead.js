@@ -2,7 +2,7 @@ export function Undead(name) {
     this.name = name;
     this.health = 1950;
     this.minDamage = 140;
-    this.maxDamage = 190;
+    this.maxDamage = 199;
     this.spell = getRandom(25, 35);
     this.armor = getRandom(1,3);
     this.type = "mage";
@@ -10,7 +10,7 @@ export function Undead(name) {
     this.updateHealthBar = function(total, damage) {
         var total = 1950;
         var fB = $(".fightDesno");
-        
+        var takeHit = new Audio("audio/talbot.mp3");
         var value = this.health;
         var box = $(".flip-card-front6")
        var hBar = $(".healthBar6")
@@ -41,18 +41,19 @@ export function Undead(name) {
         
          setTimeout(function(){
             if (damage > 0 && damage < 200) {
-                fB.find("#damageP1").html("Talbot takes " + damage+ " dmg")
+                fB.find("#damageP1").html("Talbot takes " + damage+ " dmg").css("color", "white")
                 hit.css({ 'width': '0' }); 
                 bar.css('width', barWidth + "%");
             } else if(damage > 200){
-                fB.find("#damageP1").html("Talbot takes crit " + damage)
+                fB.find("#damageP1").html("Talbot takes crit " + damage).css("color", "red").addClass("animated heartBeat")
                 hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
+                takeHit.play();
             }
             else{
                 hitWidth = 0;
                 barWidth = 0;
-                fB.find("#damageP1").html("Talbot blocked");
+                fB.find("#damageP1").html("Talbot blocked").css("color", "white");;
         
             }
           }, 500);

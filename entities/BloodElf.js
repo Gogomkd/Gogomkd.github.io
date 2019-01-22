@@ -1,8 +1,8 @@
 export function BloodElf (name){
     this.name = name;
     this.health = 2000;
-    this.minDamage = 130;
-    this.maxDamage = 180;
+    this.minDamage = 140;
+    this.maxDamage = 199;
     this.block = getRandom(30,40);
     this.armor = getRandom(3,6);
     this.type = "warrior";
@@ -13,7 +13,7 @@ export function BloodElf (name){
         var box = $(".flip-card-front5")
         var p = $("#damageP1")
         var fB = $(".fightDesno");
-       
+        var takeHit = new Audio("audio/feyvea.mp3");
         var hBar = $('.healthBar5');
         hBar.find(".healthBarP").html(value);
         
@@ -49,18 +49,19 @@ export function BloodElf (name){
         }
         setTimeout(function () {
             if (damage > 0 && damage < 200) {
-                fB.find("#damageP1").html("Feyvea takes " + damage+ " dmg")
+                fB.find("#damageP1").html("Feyvea takes " + damage+ " dmg").css("color", "white")
                 hit.css({ 'width': '0' }); 
                 bar.css('width', barWidth + "%");
             } else if(damage > 200){
-                fB.find("#damageP1").html("Feyvea takes crit " + damage)
+                fB.find("#damageP1").html("Feyvea takes crit " + damage).css("color", "red").addClass("animated heartBeat")
                 hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
+                takeHit.play();
             }
             else{
                 hitWidth = 0;
                 barWidth = 0;
-                fB.find("#damageP1").html("Feyvea blocked");
+                fB.find("#damageP1").html("Feyvea blocked").css("color", "white");
         
             }
         }, 500);

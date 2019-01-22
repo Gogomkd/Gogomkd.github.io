@@ -1,8 +1,8 @@
 export function OrcWarrior(name) {
     this.name = name;
     this.health = 2300;
-    this.minDamage = 120;
-    this.maxDamage = 180;
+    this.minDamage = 140;
+    this.maxDamage = 199;
     this.block = getRandom(16, 26);
     this.armor = getRandom(4, 7);
     this.type = "warrior";
@@ -11,7 +11,7 @@ export function OrcWarrior(name) {
 
         var total = 2300;
         var fB = $(".fightDesno");
-       
+        var takeHit = new Audio("audio/thrall.mp3");
         var box = $(".flip-card-front4")
         var value = this.health;
         var hBar = $('.healthBar4');
@@ -43,18 +43,19 @@ export function OrcWarrior(name) {
 
         setTimeout(function () {
             if (damage > 0 && damage < 200) {
-                fB.find("#damageP1").html("Thrall takes " + damage+ " dmg")
+                fB.find("#damageP1").html("Thrall takes " + damage+ " dmg").css("color", "white")
                 hit.css({ 'width': '0' }); 
                 bar.css('width', barWidth + "%");
             } else if(damage > 200){
-                fB.find("#damageP1").html("Thrall takes crit " + damage)
+                fB.find("#damageP1").html("Thrall takes crit " + damage).css("color", "red").addClass("animated heartBeat")
                 hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
+                takeHit.play();
             }
             else{
                 hitWidth = 0;
                 barWidth = 0;
-                fB.find("#damageP1").html("Thrall blocked");
+                fB.find("#damageP1").html("Thrall blocked").css("color", "white");;
         
             }
         }, 500);

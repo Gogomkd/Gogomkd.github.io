@@ -1,8 +1,8 @@
 export function DwarfWarrior(name) {
     this.name = name;
     this.health = 1900;
-    this.minDamage = 130;
-    this.maxDamage = 170;
+    this.minDamage = 150;
+    this.maxDamage = 199;
     this.block = getRandom(28,38);
     this.type = "warrior";
     this.armor = getRandom(5,8);
@@ -11,7 +11,7 @@ export function DwarfWarrior(name) {
         var total = 1900;
         var p = $("#damageP2")
         var fB = $(".fightLevo");
-        
+        var takeHit = new Audio("audio/brann.mp3");
         var value = this.health;
         var box = $(".flip-card-front3")
         var hBar = $('.healthBar3');
@@ -42,18 +42,19 @@ export function DwarfWarrior(name) {
         }
         setTimeout(function () {
             if (damage > 0 && damage < 200) {
-                fB.find("#damageP2").html("Brann takes " + damage+ " dmg")
+                fB.find("#damageP2").html("Brann takes " + damage+ " dmg").css("color", "white")
                 hit.css({ 'width': '0' }); 
                 bar.css('width', barWidth + "%");
             } else if(damage > 200){
-                fB.find("#damageP2").html("Brann takes crit " + damage)
+                fB.find("#damageP2").html("Brann takes crit " + damage).css("color", "red").addClass("animated heartBeat")
                 hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
+                takeHit.play();
             }
             else{
                 hitWidth = 0;
                 barWidth = 0;
-                fB.find("#damageP2").html("Brann blocked");
+                fB.find("#damageP2").html("Brann blocked").css("color", "white");;
         
             }
         }, 500);

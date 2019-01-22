@@ -1,8 +1,8 @@
 export function HumanWarrior(name) {
     this.name = name;
     this.health = 2200;
-    this.minDamage = 130;
-    this.maxDamage = 190;
+    this.minDamage = 140;
+    this.maxDamage = 199;
     this.block = getRandom(20, 40);
     this.armor = getRandom(3, 8);
     this.type = "warrior";
@@ -12,7 +12,7 @@ export function HumanWarrior(name) {
         var total = 2200;
         var tP = $(".fightContainer");
         var fB = $(".fightLevo");
-
+        var takeHit = new Audio("audio/varian.mp3");
         var box = $(".flip-card-front1")
         var value = this.health;
         var hBar = $(".healthBar1")
@@ -44,18 +44,19 @@ export function HumanWarrior(name) {
         }
         setTimeout(function () {
             if (damage > 0 && damage < 200) {
-                fB.find("#damageP2").html("Varian takes " + damage+ " dmg")
+                fB.find("#damageP2").html("Varian takes " + damage+ " dmg").css("color", "white")
                 hit.css({ 'width': '0' }); 
                 bar.css('width', barWidth + "%");
             } else if(damage > 200){
-                fB.find("#damageP2").html("Varian takes crit " + damage)
+                fB.find("#damageP2").html("Varian takes crit " + damage).css("color", "red").addClass("animated heartBeat")
                 hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
+                takeHit.play();
             }
             else{
                 hitWidth = 0;
                 barWidth = 0;
-                fB.find("#damageP2").html("Varian blocked");
+                fB.find("#damageP2").html("Varian blocked").css("color", "white");;
         
             }
             

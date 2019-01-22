@@ -68,6 +68,8 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("fightLevo").appendTo(".fightContainer");
         $("<div>").addClass("fightDesno").appendTo(".fightContainer");
         $("<p>").attr("id", "damageP1").appendTo(".fightDesno");
+        $("<div>").attr("id", "leftScreen").addClass("leftScreen").appendTo(".mainContainer")
+        $("<div>").attr("id", "rightScreen").addClass("rightScreen").appendTo(".mainContainer")
         $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
         $("<p></p>").attr("id", "info").appendTo(".mainContainer")
         $("<p>").attr("id", "damageP2").appendTo(".fightLevo");

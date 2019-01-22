@@ -1,8 +1,8 @@
 export function HumanSorcerer (name){
     this.name = name;
     this.health = 2100;
-    this.minDamage = 110;
-    this.maxDamage = 190;
+    this.minDamage = 140;
+    this.maxDamage = 199;
     this.spell = getRandom(15,25);
     this.armor = getRandom(1,4);
     this.type = "mage";
@@ -13,7 +13,8 @@ export function HumanSorcerer (name){
         var box = $(".flip-card-front2")
         var p = $("#damageP2")
         var fB = $(".fightLevo");
-        
+        var takeHit = new Audio("audio/janna.mp3");
+
         var hBar = $('.healthBar2');
         hBar.find(".healthBarP").html(value)
         setTimeout(function(){
@@ -43,18 +44,20 @@ export function HumanSorcerer (name){
         }
         setTimeout(function () {
             if (damage > 0 && damage < 200) {
-                fB.find("#damageP2").html("Janna takes " + damage+ " dmg")
+                fB.find("#damageP2").html("Janna takes " + damage+ " dmg").css("color", "white")
                 hit.css({ 'width': '0' }); 
                 bar.css('width', barWidth + "%");
+                
             } else if(damage > 200){
-                fB.find("#damageP2").html("Janna takes crit " + damage)
+                fB.find("#damageP2").html("Janna takes crit " + damage).css("color", "red").addClass("animated heartBeat")
                 hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
+                takeHit.play();
             }
             else{
                 hitWidth = 0;
                 barWidth = 0;
-                fB.find("#damageP2").html("Janna blocked");
+                fB.find("#damageP2").html("Janna blocked").css("color", "white");
         
             }
             
@@ -70,6 +73,8 @@ export function HumanSorcerer (name){
         }, this.attackSpeed-200)
       
     }
+    
+    
 }
 
 HumanSorcerer.prototype = new ArenaCombatants();
