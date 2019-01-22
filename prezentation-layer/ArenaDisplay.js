@@ -1,4 +1,4 @@
-import { DeathMatch } from "/DeathMatch.js"
+import { DeathMatch } from "../combat logic/DeathMatch.js"
 
 export function ArenaLook(arenaName) {
     this.arenaName = arenaName;
@@ -9,6 +9,7 @@ export function ArenaLook(arenaName) {
 
     this.battleField = async function () {
         //visual code fighter 1
+        
         $("<div>").addClass("allianceWarrior").appendTo(".mainContainer");
         $("<div>").addClass("Warriorflip-card1").appendTo(".allianceWarrior");
         $("<div>").addClass("flip-card-inner1").appendTo(".Warriorflip-card1");
@@ -16,6 +17,7 @@ export function ArenaLook(arenaName) {
         $(".flip-card-front1").prepend("<img src='img/knight.png' alt='Avatar'  id='img' />").addClass("animated");
         $("<div>").addClass("flip-card-back1").appendTo(".flip-card-inner1");
         $(".flip-card-back1").prepend("<p> Health:" + this.arena.human.health + "</br>Armor:" + this.arena.human.armor + "</br>Block:" + this.arena.human.block + "</p>").prepend("<h2>" + this.arena.human.name + "</h2>");//visual code fighter 1 end
+        
 
         //visual code fighter 2
         $("<div>").addClass("allianceSorcerer").css("margin-top", "50px").appendTo(".mainContainer");
@@ -99,9 +101,12 @@ export function ArenaLook(arenaName) {
         //Arena Reset Button
         $("<div>").addClass("button1").css("visibility", "hidden").appendTo(".holder").on("click", (event) => {
             event.preventDefault();
+            var that = this;
+           
             $(".mainContainer").html("");
             this.arena.humanCombatant = [];
             this.arena.hordeCombatant = [];
+            
             this.battleField(event.target);
         });
         $("<p>Arena</p>").addClass("btnText").appendTo(".button1");
@@ -122,9 +127,9 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar1").appendTo(".healthBar1")
             $("<div>").addClass("hit1").appendTo(".bar1");
             $("<p>").addClass("healthBarP").html(this.arena.human.health).appendTo(".healthBar1");
-    
-            console.log(that.arena.human.health);
-            console.log(event);
+            
+            // console.log(that.arena.human.health);
+            // console.log(event);
             $("#button1").css("display", "none");///choose button for fighter to be hidden
 
         });
@@ -146,7 +151,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit2").appendTo(".bar2");
             $("<p>").addClass("healthBarP").html(this.arena.humanMage.health).appendTo(".healthBar2");
 
-            console.log(event);
+            // console.log(event);
             $("#button2").css("display", "none");///choose button for fighter to be hidden
             
         });
@@ -166,7 +171,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit3").appendTo(".bar3");
             $("<p>").addClass("healthBarP").html(this.arena.dwarf.health).appendTo(".healthBar3");
     
-            console.log(event);
+            // console.log(event);
             $("#button3").css("display", "none");
             
         });
@@ -181,7 +186,7 @@ export function ArenaLook(arenaName) {
             $(".button").css("visibility", "visible");
             $(".button1").css("visibility", "visible");
             $(".hordeWarrior").appendTo(".fightDesno");
-            console.log(event);
+            // console.log(event);
             $("#button4").css("display", "none");
             $("<div>").addClass("healthBar4").appendTo(".hordeWarrior");
             $("<div>").addClass("bar4").appendTo(".healthBar4");
@@ -205,7 +210,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit5").appendTo(".bar5");
             $("<p>").addClass("healthBarP").html(this.arena.bloodElf.health).appendTo(".healthBar5");
     
-            console.log(event);
+            // console.log(event);
             $("#button5").css("display", "none");
            
         });
@@ -220,7 +225,7 @@ export function ArenaLook(arenaName) {
             $(".button").css("visibility", "visible");
             $(".button1").css("visibility", "visible");
             $(".hordeUndead").appendTo(".fightDesno");
-            console.log(event);
+            // console.log(event);
             $("#button6").css("display", "none");
             $("<div>").addClass("healthBar6").appendTo(".hordeUndead");
             $("<div>").addClass("bar6").appendTo(".healthBar6");
@@ -234,6 +239,37 @@ export function ArenaLook(arenaName) {
         $("<p>Talbot</p>").addClass("btnText2").appendTo(".btnTwo8");//fighter 6 code end 
       
         
+        if(this.arena.human.health < 0){ // the one who dies in a duel can't be selected afterwards to fight he is dead 
+           var one =  $(".flip-card-back1")
+           one.find("p").html("DEAD")
+            $("#button1").css("display", "none");
+        }
+        if(this.arena.humanMage.health < 0){
+            var one =  $(".flip-card-back2")
+            one.find("p").html("DEAD")
+             $("#button2").css("display", "none");
+         }
+        if(this.arena.dwarf.health < 0){
+            var one = $(".flip-card-back3")
+            one.find("p").html("DEAD")
+            $("#button3").css("display", "none");
+        }
+        
+        if(this.arena.orc.health < 0){
+            var one = $(".flip-card-back4")
+            one.find("p").html("DEAD")
+            $("#button4").css("display", "none");
+        }
+        if(this.arena.bloodElf.health < 0){
+            var one = $(".flip-card-back5")
+            one.find("p").html("DEAD")
+            $("#button5").css("display", "none");
+        }
+        if(this.arena.undead.health < 0){
+           var one =  $(".flip-card-back6")
+           one.find("p").html("DEAD")
+            $("#button6").css("display", "none");/// code block for checking who is alive on the battlefield
+        }
         
     }
 }

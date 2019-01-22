@@ -1,14 +1,14 @@
 export function HumanSorcerer (name){
     this.name = name;
-    this.health = 2100;
+    this.health = 2600;
     this.minDamage = 140;
     this.maxDamage = 199;
     this.spell = getRandom(15,25);
-    this.armor = getRandom(1,4);
+    this.armor = getRandom(4,7);
     this.type = "mage";
     this.attackSpeed = 2800;      
     this.updateHealthBar = function (total, damage) {
-        var total = 2100;
+        var total = 2600;
         var value = this.health;
         var box = $(".flip-card-front2")
         var p = $("#damageP2")
@@ -38,7 +38,7 @@ export function HumanSorcerer (name){
         }
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
-        if(value < 900){
+        if(value < 1300){
             bar.css("background", "#FA6600")
             
         }
@@ -71,7 +71,10 @@ export function HumanSorcerer (name){
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed-200)
-      
+        if(value < 0){
+            value = 0;
+            hBar.find(".healthBarP").html("0").css("color", "red");
+        }
     }
     
     

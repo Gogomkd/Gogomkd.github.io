@@ -20,14 +20,8 @@ export function DeathMatch() {
 
         for (let index = 0; index < this.humanCombatant.length; index++) {
             for (let index2 = 0; index2 < this.hordeCombatant.length; index2++) {
-                
-                var tepac1 = this.humanCombatant[0];
-                var tepac3 = this.humanCombatant[1];
-                var tepac5 = this.humanCombatant[2];
-                var tepac2 = this.hordeCombatant[0];
-                var tepac4 = this.hordeCombatant[1];
-                var tepac6 = this.humanCombatant[2];
-
+                var tepac1 = this.humanCombatant[index];
+                var tepac2 = this.hordeCombatant[index2];
             }
 
         }
@@ -296,30 +290,42 @@ export function DeathMatch() {
     this.getHumanWarrior = function () {
         this.humanCombatant.push(this.human);
         console.log(this.humanCombatant);
+        $("#button2").css("display", "none");
+        $("#button3").css("display", "none");
     }
 
     this.getHumanSorcerer = function () {
         this.humanCombatant.push(this.humanMage);
         console.log(this.humanCombatant);
+        $("#button1").css("display", "none");
+        $("#button3").css("display", "none");
     }
     this.getDwarfWarrior = function () {
         this.humanCombatant.push(this.dwarf);
         console.log(this.humanCombatant);
+        $("#button1").css("display", "none");
+        $("#button2").css("display", "none");
     }
 
     this.getOrcWarrior = function () {
         this.hordeCombatant.push(this.orc);
         console.log(this.hordeCombatant);
+        $("#button5").css("display", "none");
+        $("#button6").css("display", "none");
     }
 
     this.getBloodElf = function () {
         this.hordeCombatant.push(this.bloodElf);
         console.log(this.hordeCombatant);
+        $("#button4").css("display", "none");
+        $("#button6").css("display", "none");
     }
 
     this.getUndeadWarrior = function () {
         this.hordeCombatant.push(this.undead);
         console.log(this.hordeCombatant);
+        $("#button4").css("display", "none");
+        $("#button5").css("display", "none");
     }
 
 

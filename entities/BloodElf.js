@@ -1,14 +1,14 @@
 export function BloodElf (name){
     this.name = name;
-    this.health = 2000;
+    this.health = 2500;
     this.minDamage = 140;
     this.maxDamage = 199;
     this.block = getRandom(30,40);
-    this.armor = getRandom(3,6);
+    this.armor = getRandom(6,9);
     this.type = "warrior";
     this.attackSpeed = 2100;
     this.updateHealthBar = function (total, damage) {
-        var total = 2000;
+        var total = 2500;
         var value = this.health;
         var box = $(".flip-card-front5")
         var p = $("#damageP1")
@@ -28,22 +28,19 @@ export function BloodElf (name){
         }, this.attackSpeed - 200)
         var bar = $('.bar5');
         var hit = $('.hit5');
-        if(value < 0){
-            console.log("dead");
-            return
-            
-        }
+    
         var newValue = value - damage;
 
         var barWidth = (newValue / total) * 100;
         var hitWidth = (damage / value) * 100 + "%";
-        hit.css('width', hitWidth);
-        hBar.data('value', newValue);
+        
         if(barWidth < 0){
             barWidth = 0;
             hitWidth = 0;
         }
-        if(value < 1000){
+        hit.css('width', hitWidth);
+        hBar.data('value', newValue);
+        if(value < 1250){
             bar.css("background", "#FA6600")
             
         }
@@ -73,7 +70,10 @@ export function BloodElf (name){
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed-200)
-  
+        if(value < 0){
+            value = 0;
+            hBar.find(".healthBarP").html("0").css("color", "red");
+        }
     }
 }
 

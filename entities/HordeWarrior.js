@@ -1,15 +1,15 @@
 export function OrcWarrior(name) {
     this.name = name;
-    this.health = 2300;
+    this.health = 2800;
     this.minDamage = 140;
     this.maxDamage = 199;
     this.block = getRandom(16, 26);
-    this.armor = getRandom(4, 7);
+    this.armor = getRandom(7, 10);
     this.type = "warrior";
     this.attackSpeed = 2000;
     this.updateHealthBar = function (total, damage) {
 
-        var total = 2300;
+        var total = 2800;
         var fB = $(".fightDesno");
         var takeHit = new Audio("audio/thrall.mp3");
         var box = $(".flip-card-front4")
@@ -37,7 +37,7 @@ export function OrcWarrior(name) {
         }
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
-        if (value < 1150) {
+        if (value < 1400) {
             bar.css("background", "#FA6600")
         }
 
@@ -67,7 +67,10 @@ export function OrcWarrior(name) {
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed - 200)
-     
+        if(value < 0){
+            value = 0;
+            hBar.find(".healthBarP").html("0").css("color", "red");
+        }
     }
 
 }

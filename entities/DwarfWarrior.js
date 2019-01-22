@@ -1,14 +1,14 @@
 export function DwarfWarrior(name) {
     this.name = name;
-    this.health = 1900;
+    this.health = 2400;
     this.minDamage = 150;
     this.maxDamage = 199;
     this.block = getRandom(28,38);
     this.type = "warrior";
-    this.armor = getRandom(5,8);
+    this.armor = getRandom(8,11);
     this.attackSpeed = 1700;
     this.updateHealthBar = function (total, damage) {
-        var total = 1900;
+        var total = 2400;
         var p = $("#damageP2")
         var fB = $(".fightLevo");
         var takeHit = new Audio("audio/brann.mp3");
@@ -37,7 +37,7 @@ export function DwarfWarrior(name) {
         }
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
-        if(value < 950){
+        if(value <1200){
             bar.css("background", "#FA6600")
         }
         setTimeout(function () {
@@ -66,7 +66,10 @@ export function DwarfWarrior(name) {
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed-200)
-
+        if(value < 0){
+            value = 0;
+            hBar.find(".healthBarP").html("0").css("color", "red");
+        }
     }
 }
 

@@ -1,16 +1,16 @@
 export function HumanWarrior(name) {
     this.name = name;
-    this.health = 2200;
+    this.health = 2700;
     this.minDamage = 140;
     this.maxDamage = 199;
     this.block = getRandom(20, 40);
-    this.armor = getRandom(3, 8);
+    this.armor = getRandom(5,10);
     this.type = "warrior";
-    this.attackSpeed = 1900;
+    this.attackSpeed = 2300;
     this.updateHealthBar = function (total, damage) {
 
-        var total = 2200;
-        var tP = $(".fightContainer");
+        var total = 2700;
+        
         var fB = $(".fightLevo");
         var takeHit = new Audio("audio/varian.mp3");
         var box = $(".flip-card-front1")
@@ -39,7 +39,7 @@ export function HumanWarrior(name) {
         }
         hit.css('width', hitWidth);
         hBar.data('value', newValue);
-        if (value < 1100) {
+        if (value < 1350) {
             bar.css("background", "#FA6600")
         }
         setTimeout(function () {
@@ -70,7 +70,10 @@ export function HumanWarrior(name) {
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed - 200)
- 
+        if(value < 0){
+            value = 0;
+            hBar.find(".healthBarP").html("0").css("color", "red");
+        }
     }
 }
 

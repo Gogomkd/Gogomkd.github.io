@@ -1,4 +1,4 @@
-import {ArenaLook} from "/ArenaDisplay.js"
+import {ArenaLook} from "./prezentation-layer/ArenaDisplay.js"
 
 async function Main() {
     var match =  new ArenaLook("Nagrand");

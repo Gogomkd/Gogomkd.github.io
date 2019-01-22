@@ -1,14 +1,14 @@
 export function Undead(name) {
     this.name = name;
-    this.health = 1950;
+    this.health = 2450;
     this.minDamage = 140;
     this.maxDamage = 199;
     this.spell = getRandom(25, 35);
-    this.armor = getRandom(1,3);
+    this.armor = getRandom(3,5);
     this.type = "mage";
     this.attackSpeed = 2900;
     this.updateHealthBar = function(total, damage) {
-        var total = 1950;
+        var total = 2450;
         var fB = $(".fightDesno");
         var takeHit = new Audio("audio/talbot.mp3");
         var value = this.health;
@@ -35,7 +35,7 @@ export function Undead(name) {
         }
          hit.css('width', hitWidth);
          hBar.data('value', newValue);
-         if(value < 875){
+         if(value < 1225){
             bar.css("background", "#FA6600")
         }
         
@@ -66,7 +66,10 @@ export function Undead(name) {
             });
         }, this.attackSpeed-200)
 
-           
+        if(value < 0){
+            value = 0;
+            hBar.find(".healthBarP").html("0").css("color", "red");
+        }
      }
 }
 
