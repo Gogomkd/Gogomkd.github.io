@@ -42,11 +42,19 @@ export function DwarfWarrior(name) {
         }
         setTimeout(function () {
             if (damage > 0 && damage < 200) {
-                fB.find("#damageP2").html("Brann takes " + damage+ " dmg").css("color", "white")
+                var animationName = "animated fadeOut";
+                var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+                fB.find("#damageP2").html("Brann takes " + damage+ " dmg").css("color", "white").addClass(animationName).one(animationend, function (){
+                    $(this).removeClass(animationName);
+                })
                 hit.css({ 'width': '0' }); 
                 bar.css('width', barWidth + "%");
             } else if(damage > 200){
-                fB.find("#damageP2").html("Brann takes crit " + damage).css("color", "red").addClass("animated heartBeat")
+                var animationName = "animated heartBeat";
+                var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+                fB.find("#damageP2").html("Brann takes crit " + damage).css("color", "red").addClass(animationName).one(animationend, function(){
+                    $(this).removeClass(animationName);
+                })
                 hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
                 takeHit.play();
@@ -54,10 +62,14 @@ export function DwarfWarrior(name) {
             else{
                 hitWidth = 0;
                 barWidth = 0;
-                fB.find("#damageP2").html("Brann blocked").css("color", "white");;
+                var animationName = "animated fadeOut";
+                var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
+                fB.find("#damageP2").html("Brann blocked").css("color", "white").addClass(animationName).one(animationend, function() {
+                    $(this).removeClass(animationName);
+                });
         
             }
-        }, 500);
+        }, 1000);
         
         setTimeout(function () {
             var animationName = "animated shake";
