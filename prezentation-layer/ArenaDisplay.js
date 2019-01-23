@@ -243,31 +243,39 @@ export function ArenaLook(arenaName) {
            var one =  $(".flip-card-back1")
            one.find("p").html("DEAD")
             $("#button1").css("display", "none");
+            $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner1 ");
+            
         }
         if(this.arena.humanMage.health < 0){
             var one =  $(".flip-card-back2")
             one.find("p").html("DEAD")
              $("#button2").css("display", "none");
+             $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner2 ");
          }
         if(this.arena.dwarf.health < 0){
             var one = $(".flip-card-back3")
             one.find("p").html("DEAD")
             $("#button3").css("display", "none");
+            $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner3 ");
         }
         
         if(this.arena.orc.health < 0){
             var one = $(".flip-card-back4")
             one.find("p").html("DEAD")
             $("#button4").css("display", "none");
+            $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner4 ")
+           
         }
         if(this.arena.bloodElf.health < 0){
             var one = $(".flip-card-back5")
             one.find("p").html("DEAD")
             $("#button5").css("display", "none");
+            $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner5 ");
         }
         if(this.arena.undead.health < 0){
            var one =  $(".flip-card-back6")
            one.find("p").html("DEAD")
+           $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner6 ");
             $("#button6").css("display", "none");/// code block for checking who is alive on the battlefield
         }
         
