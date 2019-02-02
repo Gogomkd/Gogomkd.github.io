@@ -10,11 +10,15 @@ export function OrcWarrior(name) {
     this.updateHealthBar = function (total, damage) {
 
         var total = 2800;
-        var fB = $(".fightDesno");
+        var fB = $("#damageP1");
         var takeHit = new Audio("audio/thrall.mp3");
         var box = $(".flip-card-front4")
         var value = this.health;
         var hBar = $('.healthBar4');
+        var flip = $(".flip-card-back4")
+        flip.find("p").html("<p> Health:" + value + "</br>Armor:" + this.armor + "</br>Block:" + this.block + "</p>")
+
+
         hBar.find(".healthBarP").html(value);
         setTimeout(function () {
             var animationName = "heartBeat";
@@ -45,32 +49,32 @@ export function OrcWarrior(name) {
             if (damage > 0 && damage < 200) {
                 var animationName = "animated fadeOut";
                 var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
-                fB.find("#damageP1").html("Thrall takes " + damage+ " dmg").css("color", "white").addClass(animationName).one(animationend, function (){
+                fB.find("#orcWarr").html("Thrall takes " + damage + " dmg").css("color", "white").addClass(animationName).one(animationend, function () {
                     $(this).removeClass(animationName);
                 })
-                hit.css({ 'width': '0' }); 
+                hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
-            } else if(damage > 200){
+            } else if (damage > 200) {
                 var animationName = "animated heartBeat";
                 var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
-                fB.find("#damageP1").html("Thrall takes crit " + damage).css("color", "red").addClass(animationName).one(animationend, function(){
+                fB.find("#orcWarr").html("Thrall takes crit " + damage).css("color", "red").addClass(animationName).one(animationend, function () {
                     $(this).removeClass(animationName);
                 })
                 hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
                 takeHit.play();
             }
-            else{
+            else {
                 hitWidth = 0;
                 barWidth = 0;
                 var animationName = "animated fadeOut";
                 var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
-                fB.find("#damageP1").html("Thrall blocked").css("color", "white").addClass(animationName).one(animationend, function() {
+                fB.find("#orcWarr").html("Thrall blocked").css("color", "white").addClass(animationName).one(animationend, function () {
                     $(this).removeClass(animationName);
                 });
-        
+
             }
-        }, 1000);
+        }, 1500);
 
         setTimeout(function () {
             var animationName = "animated shake";
@@ -79,7 +83,7 @@ export function OrcWarrior(name) {
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed - 200)
-        if(value < 0){
+        if (value < 0) {
             value = 0;
             hBar.find(".healthBarP").html("0").css("color", "red");
         }

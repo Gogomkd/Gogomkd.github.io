@@ -9,7 +9,6 @@ export function ArenaLook(arenaName) {
 
     this.battleField = async function () {
         //visual code fighter 1
-        
         $("<div>").addClass("allianceWarrior").appendTo(".mainContainer");
         $("<div>").addClass("Warriorflip-card1").appendTo(".allianceWarrior");
         $("<div>").addClass("flip-card-inner1").appendTo(".Warriorflip-card1");
@@ -17,7 +16,7 @@ export function ArenaLook(arenaName) {
         $(".flip-card-front1").prepend("<img src='img/knight.png' alt='Avatar'  id='img' />").addClass("animated");
         $("<div>").addClass("flip-card-back1").appendTo(".flip-card-inner1");
         $(".flip-card-back1").prepend("<p> Health:" + this.arena.human.health + "</br>Armor:" + this.arena.human.armor + "</br>Block:" + this.arena.human.block + "</p>").prepend("<h2>" + this.arena.human.name + "</h2>");//visual code fighter 1 end
-        
+
 
         //visual code fighter 2
         $("<div>").addClass("allianceSorcerer").css("margin-top", "50px").appendTo(".mainContainer");
@@ -64,21 +63,28 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("flip-card-back6").appendTo(".flip-card-inner6");
         $(".flip-card-back6").prepend("<p>Health:" + this.arena.undead.health + "</br>Armor:" + this.arena.undead.armor + "</br>Spell:" + this.arena.undead.spell + "</p>").prepend("<h2>" + this.arena.undead.name + "</h2>"); //visual code fighter 6 end
 
-        
+        $("<div>").addClass("fightArea").appendTo(".mainContainer")
         $("<div>").addClass("fightContainer").appendTo(".mainContainer");///fithing space code
-        $("<p></p>").attr("id", "#damageP").appendTo(".fightContainer")
+        // $("<p></p>").attr("id", "#damageP").appendTo(".fightContainer")
         $("<div>").addClass("fightLevo").appendTo(".fightContainer");
         $("<div>").addClass("fightDesno").appendTo(".fightContainer");
-        $("<p>").attr("id", "damageP1").appendTo(".fightDesno");
+        $("<div>").attr("id", "damageP1").appendTo(".fightDesno");
+        $("<div>").attr("id", "damageP2").appendTo(".fightLevo");
+        $("<p>").attr("id", "humanWarr").appendTo("#damageP2")
+        $("<p>").attr("id", "humanMage").appendTo("#damageP2")
+        $("<p>").attr("id", "dwarf").appendTo("#damageP2")
         $("<div>").attr("id", "leftScreen").addClass("leftScreen").appendTo(".mainContainer")
         $("<div>").attr("id", "rightScreen").addClass("rightScreen").appendTo(".mainContainer")
+        // $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
+        // $("<p></p>").attr("id", "info").appendTo(".mainContainer")
+
+        $("<p>").attr("id", "orcWarr").appendTo("#damageP1")
+        $("<p>").attr("id", "bloodElf").appendTo("#damageP1")
+        $("<p>").attr("id", "undead").appendTo("#damageP1")
         $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
         $("<p></p>").attr("id", "info").appendTo(".mainContainer")
-        $("<p>").attr("id", "damageP2").appendTo(".fightLevo");
-        
-
-        
         $("<div>").addClass("holder").css("visibility", "hidden", "margin-top", "130").appendTo(".mainContainer")//fithing space code end
+
 
         //Arena Fight Start Button
         $("<div>").addClass("button").css("visibility", "hidden").appendTo(".holder").on("click", async (event) => {
@@ -91,7 +97,7 @@ export function ArenaLook(arenaName) {
             var result = await this.arena.fight();
             event = result;
             // console.log(event);
-         
+
         });
         $("<p>Ready</p>").addClass("btnText").appendTo(".button");
         $("<div>").addClass("btnTwo").appendTo(".button");
@@ -102,11 +108,11 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("button1").css("visibility", "hidden").appendTo(".holder").on("click", (event) => {
             event.preventDefault();
             var that = this;
-           
+
             $(".mainContainer").html("");
             this.arena.humanCombatant = [];
             this.arena.hordeCombatant = [];
-            
+
             this.battleField(event.target);
         });
         $("<p>Arena</p>").addClass("btnText").appendTo(".button1");
@@ -127,7 +133,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar1").appendTo(".healthBar1")
             $("<div>").addClass("hit1").appendTo(".bar1");
             $("<p>").addClass("healthBarP").html(this.arena.human.health).appendTo(".healthBar1");
-            
+
             // console.log(that.arena.human.health);
             // console.log(event);
             $("#button1").css("display", "none");///choose button for fighter to be hidden
@@ -136,8 +142,8 @@ export function ArenaLook(arenaName) {
         $("<p>Choose</p>").addClass("btnText").appendTo(".button2");
         $("<div>").addClass("btnTwo3").appendTo(".button2");
         $("<p>Varian</p>").addClass("btnText2").appendTo(".btnTwo3");//fighter 1 code end
-        
-        
+
+
 
         //Fighter 2 code
         $("<button>").addClass("button3").attr("id", "button2").appendTo(".allianceSorcerer").on("click", (event) => {
@@ -153,12 +159,12 @@ export function ArenaLook(arenaName) {
 
             // console.log(event);
             $("#button2").css("display", "none");///choose button for fighter to be hidden
-            
+
         });
         $("<p>Choose</p>").addClass("btnText").appendTo(".button3");
         $("<div>").addClass("btnTwo4").appendTo(".button3");
         $("<p>Jaina</p>").addClass("btnText2").appendTo(".btnTwo4");//fighter 2 code end
-        
+
         //Fighter 3 code
         $("<button>").addClass("button4").attr("id", "button3").appendTo(".allianceDwarf").on("click", (event) => {
             event = this.arena.getDwarfWarrior();
@@ -170,15 +176,15 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar3").appendTo(".healthBar3");
             $("<div>").addClass("hit3").appendTo(".bar3");
             $("<p>").addClass("healthBarP").html(this.arena.dwarf.health).appendTo(".healthBar3");
-    
+
             // console.log(event);
             $("#button3").css("display", "none");
-            
+
         });
         $("<p>Choose</p>").addClass("btnText").appendTo(".button4");
         $("<div>").addClass("btnTwo5").appendTo(".button4");
         $("<p>Brann</p>").addClass("btnText2").appendTo(".btnTwo5");//fighter 3 code end
-     
+
         //Fighter 4 code
         $("<button>").addClass("button5").attr("id", "button4").appendTo(".hordeWarrior").on("click", (event) => {
             event = this.arena.getOrcWarrior();
@@ -197,7 +203,7 @@ export function ArenaLook(arenaName) {
         $("<p>Choose</p>").addClass("btnText").appendTo(".button5");
         $("<div>").addClass("btnTwo6").appendTo(".button5");
         $("<p>Thrall</p>").addClass("btnText2").appendTo(".btnTwo6");//fighter 4 code end
-        
+
         //Fighter 5 code
         $("<button>").addClass("button6").attr("id", "button5").appendTo(".hordeBloodElf").on("click", (event) => {
             event = this.arena.getBloodElf();
@@ -209,15 +215,15 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar5").appendTo(".healthBar5");
             $("<div>").addClass("hit5").appendTo(".bar5");
             $("<p>").addClass("healthBarP").html(this.arena.bloodElf.health).appendTo(".healthBar5");
-    
+
             // console.log(event);
             $("#button5").css("display", "none");
-           
+
         });
         $("<p>Choose</p>").addClass("btnText").appendTo(".button6");
         $("<div>").addClass("btnTwo7").appendTo(".button6");
         $("<p>Feyvea</p>").addClass("btnText2").appendTo(".btnTwo7");//fighter 5 code end 
-      
+
         //Fighter 6 code
         $("<button>").addClass("button7").attr("id", "button6").appendTo(".hordeUndead").on("click", (event) => {
             event = this.arena.getUndeadWarrior();
@@ -231,53 +237,53 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar6").appendTo(".healthBar6");
             $("<div>").addClass("hit6").appendTo(".bar6");
             $("<p>").addClass("healthBarP").html(this.arena.undead.health).appendTo(".healthBar6");
-    
-            
+
+
         });
         $("<p>Choose</p>").addClass("btnText").appendTo(".button7");
         $("<div>").addClass("btnTwo8").appendTo(".button7");
         $("<p>Talbot</p>").addClass("btnText2").appendTo(".btnTwo8");//fighter 6 code end 
-      
-        
-        if(this.arena.human.health < 0){ // the one who dies in a duel can't be selected afterwards to fight he is dead 
-           var one =  $(".flip-card-back1")
-           one.find("p").html("DEAD")
+
+
+        if (this.arena.human.health < 0) { // the one who dies in a duel can't be selected afterwards to fight he is dead 
+            var one = $(".flip-card-back1")
+            one.find("p").html("DEAD")
             $("#button1").css("display", "none");
             $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner1 ");
-            
+
         }
-        if(this.arena.humanMage.health < 0){
-            var one =  $(".flip-card-back2")
+        if (this.arena.humanMage.health < 0) {
+            var one = $(".flip-card-back2")
             one.find("p").html("DEAD")
-             $("#button2").css("display", "none");
-             $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner2 ");
-         }
-        if(this.arena.dwarf.health < 0){
+            $("#button2").css("display", "none");
+            $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner2 ");
+        }
+        if (this.arena.dwarf.health < 0) {
             var one = $(".flip-card-back3")
             one.find("p").html("DEAD")
             $("#button3").css("display", "none");
             $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner3 ");
         }
-        
-        if(this.arena.orc.health < 0){
+
+        if (this.arena.orc.health < 0) {
             var one = $(".flip-card-back4")
             one.find("p").html("DEAD")
             $("#button4").css("display", "none");
             $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner4 ")
-           
+
         }
-        if(this.arena.bloodElf.health < 0){
+        if (this.arena.bloodElf.health < 0) {
             var one = $(".flip-card-back5")
             one.find("p").html("DEAD")
             $("#button5").css("display", "none");
             $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner5 ");
         }
-        if(this.arena.undead.health < 0){
-           var one =  $(".flip-card-back6")
-           one.find("p").html("DEAD")
-           $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner6 ");
+        if (this.arena.undead.health < 0) {
+            var one = $(".flip-card-back6")
+            one.find("p").html("DEAD")
+            $("<img src='img/xmark.png'/>").addClass("xMark").appendTo(".flip-card-inner6 ");
             $("#button6").css("display", "none");/// code block for checking who is alive on the battlefield
         }
-        
+
     }
 }

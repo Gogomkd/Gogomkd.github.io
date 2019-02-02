@@ -4,18 +4,20 @@ export function HumanWarrior(name) {
     this.minDamage = 140;
     this.maxDamage = 199;
     this.block = getRandom(20, 40);
-    this.armor = getRandom(5,10);
+    this.armor = getRandom(5, 10);
     this.type = "warrior";
     this.attackSpeed = 2300;
     this.updateHealthBar = function (total, damage) {
 
         var total = 2700;
-        
-        var fB = $(".fightLevo");
+
+        var fB = $("#damageP2");
         var takeHit = new Audio("audio/varian.mp3");
         var box = $(".flip-card-front1")
         var value = this.health;
         var hBar = $(".healthBar1")
+        var flip = $(".flip-card-back1")
+        flip.find("p").html("<p> Health:" + value + "</br>Armor:" + this.armor + "</br>Block:" + this.block + "</p>")
         hBar.find(".healthBarP").html(value)
         setTimeout(function () {
             var animationName = "heartBeat";
@@ -46,33 +48,33 @@ export function HumanWarrior(name) {
             if (damage > 0 && damage < 200) {
                 var animationName = "animated fadeOut";
                 var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
-                fB.find("#damageP2").html("Varian takes " + damage+ " dmg").css("color", "white").addClass(animationName).one(animationend, function (){
+                fB.find("#humanWarr").html("Varian takes " + damage + " dmg").css("color", "white").addClass(animationName).one(animationend, function () {
                     $(this).removeClass(animationName);
                 })
-                hit.css({ 'width': '0' }); 
+                hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
-            } else if(damage > 200){
+            } else if (damage > 200) {
                 var animationName = "animated heartBeat";
                 var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
-                fB.find("#damageP2").html("Varian takes crit " + damage).css("color", "red").addClass(animationName).one(animationend, function(){
+                fB.find("#humanWarr").html("Varian takes crit " + damage).css("color", "red").addClass(animationName).one(animationend, function () {
                     $(this).removeClass(animationName);
                 })
                 hit.css({ 'width': '0' });
                 bar.css('width', barWidth + "%");
                 takeHit.play();
             }
-            else{
+            else {
                 hitWidth = 0;
                 barWidth = 0;
                 var animationName = "animated fadeOut";
                 var animationend = "animationend oAnimationEnd mozAnimationEnd webkitAnimationEnd MSAnimationEnd";
-                fB.find("#damageP2").html("Varian blocked").css("color", "white").addClass(animationName).one(animationend, function() {
+                fB.find("#humanWarr").html("Varian blocked").css("color", "white").addClass(animationName).one(animationend, function () {
                     $(this).removeClass(animationName);
                 });
-        
+
             }
-            
-        }, 1000);
+
+        }, 1500);
 
         setTimeout(function () {
             var animationName = "animated shake";
@@ -81,7 +83,7 @@ export function HumanWarrior(name) {
                 $(this).removeClass(animationName);
             });
         }, this.attackSpeed - 200)
-        if(value < 0){
+        if (value < 0) {
             value = 0;
             hBar.find(".healthBarP").html("0").css("color", "red");
         }
