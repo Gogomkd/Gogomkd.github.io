@@ -6,10 +6,16 @@ export function ArenaLook(arenaName) {
 
 
     $("<div>").addClass("mainContainer").appendTo(".bodyWrap"); // Main Div
-    $("<div>").addClass("allianceContainer").appendTo(".mainContainer");
-    $("<div>").addClass("fightContainer").appendTo(".mainContainer");
-    $("<div>").addClass("hordeContainer").appendTo(".mainContainer");
+
+
+
     this.battleField = async function () {
+        $("<div>").addClass("allianceContainer").appendTo(".mainContainer");
+        $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
+        $("<div>").addClass("fightContainer").appendTo(".mainContainer");
+        $("<p></p>").attr("id", "info").appendTo(".mainContainer")
+        $("<div>").addClass("hordeContainer").appendTo(".mainContainer");
+
         //visual code fighter 1
         $("<div>").addClass("allianceWarrior").appendTo(".allianceContainer");
         $("<div>").addClass("Warriorflip-card1").appendTo(".allianceWarrior");
@@ -66,20 +72,19 @@ export function ArenaLook(arenaName) {
         $(".flip-card-back6").prepend("<p>Health:" + this.arena.undead.health + "</br>Armor:" + this.arena.undead.armor + "</br>Spell:" + this.arena.undead.spell + "</p>").prepend("<h2>" + this.arena.undead.name + "</h2>"); //visual code fighter 6 end
 
         // $("<div>").addClass("fightArea").appendTo(".mainContainer")
-       ///fithing space code
+        ///fithing space code
         // $("<p></p>").attr("id", "#damageP").appendTo(".fightContainer")
         $("<div>").addClass("fightLevo").appendTo(".fightContainer");
         $("<div>").attr("id", "damageP2").appendTo(".fightContainer");
         $("<div>").addClass("fightDesno").appendTo(".fightContainer");
         $("<div>").attr("id", "damageP1").appendTo(".fightContainer");
-        
+
         $("<p>").attr("id", "humanWarr").appendTo("#damageP2")
         $("<p>").attr("id", "humanMage").appendTo("#damageP2")
         $("<p>").attr("id", "dwarf").appendTo("#damageP2")
         $("<div>").attr("id", "leftScreen").addClass("leftScreen").appendTo(".fightLevo")
         $("<div>").attr("id", "rightScreen").addClass("rightScreen").appendTo(".fightDesno")
-        // $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
-        // $("<p></p>").attr("id", "info").appendTo(".mainContainer")
+
 
         $("<p>").attr("id", "orcWarr").appendTo("#damageP1")
         $("<p>").attr("id", "bloodElf").appendTo("#damageP1")
