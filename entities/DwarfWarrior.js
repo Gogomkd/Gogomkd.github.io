@@ -10,7 +10,7 @@ export function DwarfWarrior(name) {
     this.updateHealthBar = function (total, damage) {
         var total = 2400;
         var p = $("#damageP2")
-        var fB = $("#damageP2");
+        var fB = $(".allianceDwarf");
         var takeHit = new Audio("audio/brann.mp3");
         var value = this.health;
         var flip = $(".flip-card-back3")

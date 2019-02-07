@@ -75,20 +75,20 @@ export function ArenaLook(arenaName) {
         ///fithing space code
         // $("<p></p>").attr("id", "#damageP").appendTo(".fightContainer")
         $("<div>").addClass("fightLevo").appendTo(".fightContainer");
-        $("<div>").attr("id", "damageP2").appendTo(".fightContainer");
+        // $("<div>").attr("id", "damageP2").appendTo(".fightContainer");
         $("<div>").addClass("fightDesno").appendTo(".fightContainer");
-        $("<div>").attr("id", "damageP1").appendTo(".fightContainer");
+        // $("<div>").attr("id", "damageP1").appendTo(".fightContainer");
 
-        $("<p>").attr("id", "humanWarr").appendTo("#damageP2")
-        $("<p>").attr("id", "humanMage").appendTo("#damageP2")
-        $("<p>").attr("id", "dwarf").appendTo("#damageP2")
+        
+        
+        
         $("<div>").attr("id", "leftScreen").addClass("leftScreen").appendTo(".fightLevo")
         $("<div>").attr("id", "rightScreen").addClass("rightScreen").appendTo(".fightDesno")
 
 
-        $("<p>").attr("id", "orcWarr").appendTo("#damageP1")
-        $("<p>").attr("id", "bloodElf").appendTo("#damageP1")
-        $("<p>").attr("id", "undead").appendTo("#damageP1")
+        
+       
+        
         // $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
         // $("<p></p>").attr("id", "info").appendTo(".mainContainer")
         $("<div>").addClass("holder").css("visibility", "hidden", "margin-top", "130").appendTo(".fightContainer")//fithing space code end
@@ -141,6 +141,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar1").appendTo(".healthBar1")
             $("<div>").addClass("hit1").appendTo(".bar1");
             $("<p>").addClass("healthBarP").html(this.arena.human.health).appendTo(".healthBar1");
+            $("<p>").attr("id", "humanWarr").appendTo(".allianceWarrior")
 
             // console.log(that.arena.human.health);
             // console.log(event);
@@ -164,6 +165,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar2").appendTo(".healthBar2");
             $("<div>").addClass("hit2").appendTo(".bar2");
             $("<p>").addClass("healthBarP").html(this.arena.humanMage.health).appendTo(".healthBar2");
+            $("<p>").attr("id", "humanMage").appendTo(".allianceSorcerer")
 
             // console.log(event);
             $("#button2").css("display", "none");///choose button for fighter to be hidden
@@ -184,6 +186,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar3").appendTo(".healthBar3");
             $("<div>").addClass("hit3").appendTo(".bar3");
             $("<p>").addClass("healthBarP").html(this.arena.dwarf.health).appendTo(".healthBar3");
+            $("<p>").attr("id", "dwarf").appendTo(".allianceDwarf")
 
             // console.log(event);
             $("#button3").css("display", "none");
@@ -206,6 +209,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar4").appendTo(".healthBar4");
             $("<div>").addClass("hit4").appendTo(".bar4");
             $("<p>").addClass("healthBarP").html(this.arena.orc.health).appendTo(".healthBar4");
+            $("<p>").attr("id", "orcWarr").appendTo(".hordeWarrior")
 
         });
         $("<p>Choose</p>").addClass("btnText").appendTo(".button5");
@@ -223,6 +227,7 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar5").appendTo(".healthBar5");
             $("<div>").addClass("hit5").appendTo(".bar5");
             $("<p>").addClass("healthBarP").html(this.arena.bloodElf.health).appendTo(".healthBar5");
+            $("<p>").attr("id", "bloodElf").appendTo(".hordeBloodElf")
 
             // console.log(event);
             $("#button5").css("display", "none");
@@ -245,12 +250,15 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("bar6").appendTo(".healthBar6");
             $("<div>").addClass("hit6").appendTo(".bar6");
             $("<p>").addClass("healthBarP").html(this.arena.undead.health).appendTo(".healthBar6");
+            $("<p>").attr("id", "undead").appendTo(".hordeUndead")
 
 
         });
         $("<p>Choose</p>").addClass("btnText").appendTo(".button7");
         $("<div>").addClass("btnTwo8").appendTo(".button7");
         $("<p>Talbot</p>").addClass("btnText2").appendTo(".btnTwo8");//fighter 6 code end 
+
+        
 
 
         if (this.arena.human.health < 0) { // the one who dies in a duel can't be selected afterwards to fight he is dead 

@@ -9,7 +9,7 @@ export function Undead(name) {
     this.attackSpeed = 2900;
     this.updateHealthBar = function (total, damage) {
         var total = 2450;
-        var fB = $("#damageP1");
+        var fB = $(".hordeUndead");
         var takeHit = new Audio("audio/talbot.mp3");
         var value = this.health;
         var box = $(".flip-card-front6")

@@ -12,7 +12,7 @@ export function HumanSorcerer(name) {
         var value = this.health;
         var box = $(".flip-card-front2")
 
-        var fB = $("#damageP2");
+        var fB = $(".allianceSorcerer");
         var takeHit = new Audio("audio/janna.mp3");
         var flip = $(".flip-card-back2")
         flip.find("p").html("<p> Health:" + value + "</br>Armor:" + this.armor + "</br>SpellPower:" + this.spell + "</p>")

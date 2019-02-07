@@ -12,7 +12,7 @@ export function BloodElf(name) {
         var value = this.health;
         var box = $(".flip-card-front5")
 
-        var fB = $("#damageP1");
+        var fB = $(".hordeBloodElf");
         var takeHit = new Audio("audio/feyvea.mp3");
         var hBar = $('.healthBar5');
         hBar.find(".healthBarP").html(value);

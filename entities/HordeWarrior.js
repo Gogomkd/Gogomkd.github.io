@@ -10,7 +10,7 @@ export function OrcWarrior(name) {
     this.updateHealthBar = function (total, damage) {
 
         var total = 2800;
-        var fB = $("#damageP1");
+        var fB = $(".hordeWarrior");
         var takeHit = new Audio("audio/thrall.mp3");
         var box = $(".flip-card-front4")
         var value = this.health;
