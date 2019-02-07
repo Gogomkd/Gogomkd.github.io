@@ -6,10 +6,12 @@ export function ArenaLook(arenaName) {
 
 
     $("<div>").addClass("mainContainer").appendTo(".bodyWrap"); // Main Div
-
+    $("<div>").addClass("allianceContainer").appendTo(".mainContainer");
+    $("<div>").addClass("fightContainer").appendTo(".mainContainer");
+    $("<div>").addClass("hordeContainer").appendTo(".mainContainer");
     this.battleField = async function () {
         //visual code fighter 1
-        $("<div>").addClass("allianceWarrior").appendTo(".mainContainer");
+        $("<div>").addClass("allianceWarrior").appendTo(".allianceContainer");
         $("<div>").addClass("Warriorflip-card1").appendTo(".allianceWarrior");
         $("<div>").addClass("flip-card-inner1").appendTo(".Warriorflip-card1");
         $("<div>").addClass("flip-card-front1").appendTo(".flip-card-inner1");
@@ -19,7 +21,7 @@ export function ArenaLook(arenaName) {
 
 
         //visual code fighter 2
-        $("<div>").addClass("allianceSorcerer").css("margin-top", "50px").appendTo(".mainContainer");
+        $("<div>").addClass("allianceSorcerer").css("margin-top", "50px").appendTo(".allianceContainer");
         $("<div>").addClass("Warriorflip-card2").appendTo(".allianceSorcerer");
         $("<div>").addClass("flip-card-inner2").appendTo(".Warriorflip-card2");
         $("<div>").addClass("flip-card-front2").appendTo(".flip-card-inner2");
@@ -28,7 +30,7 @@ export function ArenaLook(arenaName) {
         $(".flip-card-back2").prepend("<p>Health:" + this.arena.humanMage.health + "</br>Armor:" + this.arena.humanMage.armor + "</br>Spell:" + this.arena.humanMage.spell + " </p>").prepend("<h2>" + this.arena.humanMage.name + "</h2>"); //visual code fighter 2 end
 
         //visual code fighter 3
-        $("<div>").addClass("allianceDwarf").appendTo(".mainContainer");
+        $("<div>").addClass("allianceDwarf").appendTo(".allianceContainer");
         $("<div>").addClass("Warriorflip-card3").appendTo(".allianceDwarf");
         $("<div>").addClass("flip-card-inner3").appendTo(".Warriorflip-card3");
         $("<div>").addClass("flip-card-front3").appendTo(".flip-card-inner3");
@@ -37,7 +39,7 @@ export function ArenaLook(arenaName) {
         $(".flip-card-back3").prepend("<p>Health:" + this.arena.dwarf.health + "</br>Armor:" + this.arena.dwarf.armor + "</br>Block:" + this.arena.dwarf.block + "</p>").prepend("<h2>" + this.arena.dwarf.name + "</h2>"); //visual code fighter 3 end
 
         //visual code fighter 4
-        $("<div>").addClass("hordeWarrior").appendTo(".mainContainer");
+        $("<div>").addClass("hordeWarrior").appendTo(".hordeContainer");
         $("<div>").addClass("Warriorflip-card4").appendTo(".hordeWarrior");
         $("<div>").addClass("flip-card-inner4").appendTo(".Warriorflip-card4");
         $("<div>").addClass("flip-card-front4").appendTo(".flip-card-inner4");
@@ -46,7 +48,7 @@ export function ArenaLook(arenaName) {
         $(".flip-card-back4").prepend("<p>Health:" + this.arena.orc.health + "</br>Armor:" + this.arena.orc.armor + "</br>Block:" + this.arena.orc.block + "</p>").prepend("<h2>" + this.arena.orc.name + "</h2>"); //visual code fighter 4 end
 
         //visual code fighter 5
-        $("<div>").addClass("hordeBloodElf").css("margin-top", "40px").appendTo(".mainContainer");
+        $("<div>").addClass("hordeBloodElf").css("margin-top", "40px").appendTo(".hordeContainer");
         $("<div>").addClass("Warriorflip-card5").appendTo(".hordeBloodElf");
         $("<div>").addClass("flip-card-inner5").appendTo(".Warriorflip-card5");
         $("<div>").addClass("flip-card-front5").appendTo(".flip-card-inner5");
@@ -55,7 +57,7 @@ export function ArenaLook(arenaName) {
         $(".flip-card-back5").prepend("<p>Health:" + this.arena.bloodElf.health + "</br>Armor:" + this.arena.bloodElf.armor + "</br>Block:" + this.arena.bloodElf.block + "</p>").prepend("<h2>" + this.arena.bloodElf.name + "</h2>"); //visual code fighter 5 end
 
         //visual code fighter 6
-        $("<div>").addClass("hordeUndead").appendTo(".mainContainer");
+        $("<div>").addClass("hordeUndead").appendTo(".hordeContainer");
         $("<div>").addClass("Warriorflip-card6").appendTo(".hordeUndead");
         $("<div>").addClass("flip-card-inner6").appendTo(".Warriorflip-card6");
         $("<div>").addClass("flip-card-front6").appendTo(".flip-card-inner6");
@@ -63,27 +65,28 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("flip-card-back6").appendTo(".flip-card-inner6");
         $(".flip-card-back6").prepend("<p>Health:" + this.arena.undead.health + "</br>Armor:" + this.arena.undead.armor + "</br>Spell:" + this.arena.undead.spell + "</p>").prepend("<h2>" + this.arena.undead.name + "</h2>"); //visual code fighter 6 end
 
-        $("<div>").addClass("fightArea").appendTo(".mainContainer")
-        $("<div>").addClass("fightContainer").appendTo(".mainContainer");///fithing space code
+        // $("<div>").addClass("fightArea").appendTo(".mainContainer")
+       ///fithing space code
         // $("<p></p>").attr("id", "#damageP").appendTo(".fightContainer")
         $("<div>").addClass("fightLevo").appendTo(".fightContainer");
+        $("<div>").attr("id", "damageP2").appendTo(".fightContainer");
         $("<div>").addClass("fightDesno").appendTo(".fightContainer");
-        $("<div>").attr("id", "damageP1").appendTo(".fightDesno");
-        $("<div>").attr("id", "damageP2").appendTo(".fightLevo");
+        $("<div>").attr("id", "damageP1").appendTo(".fightContainer");
+        
         $("<p>").attr("id", "humanWarr").appendTo("#damageP2")
         $("<p>").attr("id", "humanMage").appendTo("#damageP2")
         $("<p>").attr("id", "dwarf").appendTo("#damageP2")
-        $("<div>").attr("id", "leftScreen").addClass("leftScreen").appendTo(".mainContainer")
-        $("<div>").attr("id", "rightScreen").addClass("rightScreen").appendTo(".mainContainer")
+        $("<div>").attr("id", "leftScreen").addClass("leftScreen").appendTo(".fightLevo")
+        $("<div>").attr("id", "rightScreen").addClass("rightScreen").appendTo(".fightDesno")
         // $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
         // $("<p></p>").attr("id", "info").appendTo(".mainContainer")
 
         $("<p>").attr("id", "orcWarr").appendTo("#damageP1")
         $("<p>").attr("id", "bloodElf").appendTo("#damageP1")
         $("<p>").attr("id", "undead").appendTo("#damageP1")
-        $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
-        $("<p></p>").attr("id", "info").appendTo(".mainContainer")
-        $("<div>").addClass("holder").css("visibility", "hidden", "margin-top", "130").appendTo(".mainContainer")//fithing space code end
+        // $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
+        // $("<p></p>").attr("id", "info").appendTo(".mainContainer")
+        $("<div>").addClass("holder").css("visibility", "hidden", "margin-top", "130").appendTo(".fightContainer")//fithing space code end
 
 
         //Arena Fight Start Button

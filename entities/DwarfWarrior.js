@@ -72,7 +72,7 @@ export function DwarfWarrior(name) {
                 });
 
             }
-        }, 1500);
+        }, 1000);
 
         setTimeout(function () {
             var animationName = "animated shake";
