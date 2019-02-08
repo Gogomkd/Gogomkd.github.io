@@ -3,18 +3,27 @@ import { DeathMatch } from "../combat logic/DeathMatch.js"
 export function ArenaLook(arenaName) {
     this.arenaName = arenaName;
     this.arena = new DeathMatch();
-    var sound =  new Audio("audio/gameMusic.mp3")
-
+    var sound = new Audio("audio/gameMusic.mp3");
+    
     $("<div>").addClass("mainContainer").appendTo(".bodyWrap"); // Main Div
-
-
+    
 
     this.battleField = async function () {
         sound.loop = true;
-        sound.play();
+        var playPromise = sound.play();
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            // Automatic playback started!
+            // Show playing UI.
+          })
+          .catch(error => {
+            // Auto-play was prevented
+            // Show paused UI.
+          });
+        }
         $("<div>").addClass("allianceContainer").appendTo(".mainContainer"); //split of container for start
         $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
-        $("<div>").addClass("fightContainer").appendTo(".mainContainer");  
+        $("<div>").addClass("fightContainer").appendTo(".mainContainer");
         $("<p></p>").attr("id", "info").appendTo(".mainContainer")
         $("<div>").addClass("hordeContainer").appendTo(".mainContainer");
 
@@ -79,7 +88,7 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("fightDesno").appendTo(".fightContainer");
         $("<div>").attr("id", "leftScreen").addClass("leftScreen").appendTo(".fightLevo")
         $("<div>").attr("id", "rightScreen").addClass("rightScreen").appendTo(".fightDesno")
-  
+
         // $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
         // $("<p></p>").attr("id", "info").appendTo(".mainContainer")
         $("<div>").addClass("holder").css("visibility", "hidden", "margin-top", "130").appendTo(".fightContainer")//fithing space code end
@@ -249,7 +258,7 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("btnTwo8").appendTo(".button7");
         $("<p>Talbot</p>").addClass("btnText2").appendTo(".btnTwo8");//fighter 6 code end 
 
-        
+
 
 
         if (this.arena.human.health < 0) { // the one who dies in a duel can't be selected afterwards to fight he is dead 
