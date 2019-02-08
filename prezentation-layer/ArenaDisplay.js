@@ -3,16 +3,18 @@ import { DeathMatch } from "../combat logic/DeathMatch.js"
 export function ArenaLook(arenaName) {
     this.arenaName = arenaName;
     this.arena = new DeathMatch();
-
+    var sound =  new Audio("audio/gameMusic.mp3")
 
     $("<div>").addClass("mainContainer").appendTo(".bodyWrap"); // Main Div
 
 
 
     this.battleField = async function () {
-        $("<div>").addClass("allianceContainer").appendTo(".mainContainer");
+        sound.loop = true;
+        sound.play();
+        $("<div>").addClass("allianceContainer").appendTo(".mainContainer"); //split of container for start
         $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
-        $("<div>").addClass("fightContainer").appendTo(".mainContainer");
+        $("<div>").addClass("fightContainer").appendTo(".mainContainer");  
         $("<p></p>").attr("id", "info").appendTo(".mainContainer")
         $("<div>").addClass("hordeContainer").appendTo(".mainContainer");
 
@@ -71,24 +73,13 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("flip-card-back6").appendTo(".flip-card-inner6");
         $(".flip-card-back6").prepend("<p>Health:" + this.arena.undead.health + "</br>Armor:" + this.arena.undead.armor + "</br>Spell:" + this.arena.undead.spell + "</p>").prepend("<h2>" + this.arena.undead.name + "</h2>"); //visual code fighter 6 end
 
-        // $("<div>").addClass("fightArea").appendTo(".mainContainer")
         ///fithing space code
-        // $("<p></p>").attr("id", "#damageP").appendTo(".fightContainer")
-        $("<div>").addClass("fightLevo").appendTo(".fightContainer");
-        // $("<div>").attr("id", "damageP2").appendTo(".fightContainer");
-        $("<div>").addClass("fightDesno").appendTo(".fightContainer");
-        // $("<div>").attr("id", "damageP1").appendTo(".fightContainer");
 
-        
-        
-        
+        $("<div>").addClass("fightLevo").appendTo(".fightContainer");
+        $("<div>").addClass("fightDesno").appendTo(".fightContainer");
         $("<div>").attr("id", "leftScreen").addClass("leftScreen").appendTo(".fightLevo")
         $("<div>").attr("id", "rightScreen").addClass("rightScreen").appendTo(".fightDesno")
-
-
-        
-       
-        
+  
         // $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
         // $("<p></p>").attr("id", "info").appendTo(".mainContainer")
         $("<div>").addClass("holder").css("visibility", "hidden", "margin-top", "130").appendTo(".fightContainer")//fithing space code end

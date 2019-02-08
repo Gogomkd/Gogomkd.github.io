@@ -25,26 +25,26 @@ export function DeathMatch() {
         var tepac6 = this.hordeCombatant[2];
 
         if (this.hordeCombatant.length === 0 && this.humanCombatant.length === 0) {
-            
+
             var info = $("#info1")
             info.css("color", "#007f00").addClass("animated flash").html("CHOOSE YOUR FIGHTERS")
 
-            // this.humanCombatant = [];
-            // this.hordeCombatant = [];
+            this.humanCombatant = [];
+            this.hordeCombatant = [];
         } else if ((this.hordeCombatant.length === 2 && this.humanCombatant.length === 1) || (this.hordeCombatant.length === 1 && this.humanCombatant.length === 2)) {
 
             var info = $("#info1");
             info.css("color", "#cc0000").html("Unfair Fight").addClass("animated flash")
 
-            // this.humanCombatant = [];
-            // this.hordeCombatant = [];
+            this.humanCombatant = [];
+            this.hordeCombatant = [];
 
         } else if (this.hordeCombatant.length === 0 && this.humanCombatant.length > 0 || this.hordeCombatant.length > 0 && this.humanCombatant.length === 0) {
             var info = $("#info1");
             info.css("color", "#007f00").html("You have to choose opponent").addClass("animated flash")
 
-            // this.humanCombatant = [];
-            // this.hordeCombatant = [];
+            this.humanCombatant = [];
+            this.hordeCombatant = [];
 
         }
 
