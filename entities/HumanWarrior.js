@@ -10,7 +10,6 @@ export function HumanWarrior(name) {
     this.updateHealthBar = function (total, damage) {
 
         var total = 2700;
-
         var fB = $(".allianceWarrior");
         var takeHit = new Audio("audio/varian.mp3");
         var box = $(".flip-card-front1")

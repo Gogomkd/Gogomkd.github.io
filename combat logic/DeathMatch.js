@@ -16,7 +16,7 @@ export function DeathMatch() {
     this.hordeCombatant = [];
 
     this.fight = async function () {
-
+        
         var tepac1 = this.humanCombatant[0];
         var tepac2 = this.humanCombatant[1];
         var tepac3 = this.humanCombatant[2];
@@ -888,36 +888,37 @@ export function DeathMatch() {
 
 
 
-
+    //Choose Human
     this.getHumanWarrior = function () {
         this.humanCombatant.push(this.human);
         console.log(this.humanCombatant);
 
     }
-
+    //Choose Sorcerer
     this.getHumanSorcerer = function () {
         this.humanCombatant.push(this.humanMage);
         console.log(this.humanCombatant);
 
     }
+    //Choose Dwarf
     this.getDwarfWarrior = function () {
         this.humanCombatant.push(this.dwarf);
         console.log(this.humanCombatant);
 
     }
-
+    //Choose Orc
     this.getOrcWarrior = function () {
         this.hordeCombatant.push(this.orc);
         console.log(this.hordeCombatant);
 
     }
-
+    //Choose BloodElf
     this.getBloodElf = function () {
         this.hordeCombatant.push(this.bloodElf);
         console.log(this.hordeCombatant);
 
     }
-
+    //Choose Undead
     this.getUndeadWarrior = function () {
         this.hordeCombatant.push(this.undead);
         console.log(this.hordeCombatant);

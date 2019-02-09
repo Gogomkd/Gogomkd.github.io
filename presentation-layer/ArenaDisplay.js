@@ -3,24 +3,13 @@ import { DeathMatch } from "../combat logic/DeathMatch.js"
 export function ArenaLook(arenaName) {
     this.arenaName = arenaName;
     this.arena = new DeathMatch();
-    var sound = new Audio("audio/gameMusic.mp3");
+
     
     $("<div>").addClass("mainContainer").appendTo(".bodyWrap"); // Main Div
     
 
     this.battleField = async function () {
-        sound.loop = true;
-        var playPromise = sound.play();
-        if (playPromise !== undefined) {
-          playPromise.then(_ => {
-            // Automatic playback started!
-            // Show playing UI.
-          })
-          .catch(error => {
-            // Auto-play was prevented
-            // Show paused UI.
-          });
-        }
+
         $("<div>").addClass("allianceContainer").appendTo(".mainContainer"); //split of container for start
         $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
         $("<div>").addClass("fightContainer").appendTo(".mainContainer");
@@ -38,7 +27,7 @@ export function ArenaLook(arenaName) {
 
 
         //visual code fighter 2
-        $("<div>").addClass("allianceSorcerer").css("margin-top", "50px").appendTo(".allianceContainer");
+        $("<div>").addClass("allianceSorcerer").appendTo(".allianceContainer");
         $("<div>").addClass("Warriorflip-card2").appendTo(".allianceSorcerer");
         $("<div>").addClass("flip-card-inner2").appendTo(".Warriorflip-card2");
         $("<div>").addClass("flip-card-front2").appendTo(".flip-card-inner2");
@@ -65,7 +54,7 @@ export function ArenaLook(arenaName) {
         $(".flip-card-back4").prepend("<p>Health:" + this.arena.orc.health + "</br>Armor:" + this.arena.orc.armor + "</br>Block:" + this.arena.orc.block + "</p>").prepend("<h2>" + this.arena.orc.name + "</h2>"); //visual code fighter 4 end
 
         //visual code fighter 5
-        $("<div>").addClass("hordeBloodElf").css("margin-top", "40px").appendTo(".hordeContainer");
+        $("<div>").addClass("hordeBloodElf").appendTo(".hordeContainer");
         $("<div>").addClass("Warriorflip-card5").appendTo(".hordeBloodElf");
         $("<div>").addClass("flip-card-inner5").appendTo(".Warriorflip-card5");
         $("<div>").addClass("flip-card-front5").appendTo(".flip-card-inner5");
@@ -88,9 +77,6 @@ export function ArenaLook(arenaName) {
         $("<div>").addClass("fightDesno").appendTo(".fightContainer");
         $("<div>").attr("id", "leftScreen").addClass("leftScreen").appendTo(".fightLevo")
         $("<div>").attr("id", "rightScreen").addClass("rightScreen").appendTo(".fightDesno")
-
-        // $("<p></p>").attr("id", "info1").appendTo(".mainContainer")
-        // $("<p></p>").attr("id", "info").appendTo(".mainContainer")
         $("<div>").addClass("holder").css("visibility", "hidden", "margin-top", "130").appendTo(".fightContainer")//fithing space code end
 
 
@@ -115,12 +101,9 @@ export function ArenaLook(arenaName) {
         //Arena Reset Button
         $("<div>").addClass("button1").css("visibility", "hidden").appendTo(".holder").on("click", (event) => {
             event.preventDefault();
-            var that = this;
-
             $(".mainContainer").html("");
             this.arena.humanCombatant = [];
             this.arena.hordeCombatant = [];
-
             this.battleField(event.target);
         });
         $("<p>Arena</p>").addClass("btnText").appendTo(".button1");
@@ -132,9 +115,6 @@ export function ArenaLook(arenaName) {
         $("<button>").addClass("button2").attr("id", "button1").appendTo(".allianceWarrior").on("click", (event) => {
             event = this.arena.getHumanWarrior();
             $(".allianceWarrior").appendTo(".fightLevo");
-
-
-            var that = this;
             $(".button").css("visibility", "visible");//fight button
             $(".button1").css("visibility", "visible");///reset button
             $("<div>").addClass("healthBar1").appendTo(".allianceWarrior");
@@ -142,9 +122,6 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit1").appendTo(".bar1");
             $("<p>").addClass("healthBarP").html(this.arena.human.health).appendTo(".healthBar1");
             $("<p>").attr("id", "humanWarr").appendTo(".allianceWarrior")
-
-            // console.log(that.arena.human.health);
-            // console.log(event);
             $("#button1").css("display", "none");///choose button for fighter to be hidden
 
         });
@@ -166,8 +143,6 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit2").appendTo(".bar2");
             $("<p>").addClass("healthBarP").html(this.arena.humanMage.health).appendTo(".healthBar2");
             $("<p>").attr("id", "humanMage").appendTo(".allianceSorcerer")
-
-            // console.log(event);
             $("#button2").css("display", "none");///choose button for fighter to be hidden
 
         });
@@ -187,8 +162,6 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit3").appendTo(".bar3");
             $("<p>").addClass("healthBarP").html(this.arena.dwarf.health).appendTo(".healthBar3");
             $("<p>").attr("id", "dwarf").appendTo(".allianceDwarf")
-
-            // console.log(event);
             $("#button3").css("display", "none");
 
         });
@@ -203,7 +176,6 @@ export function ArenaLook(arenaName) {
             $(".button").css("visibility", "visible");
             $(".button1").css("visibility", "visible");
             $(".hordeWarrior").appendTo(".fightDesno");
-            // console.log(event);
             $("#button4").css("display", "none");
             $("<div>").addClass("healthBar4").appendTo(".hordeWarrior");
             $("<div>").addClass("bar4").appendTo(".healthBar4");
@@ -228,8 +200,6 @@ export function ArenaLook(arenaName) {
             $("<div>").addClass("hit5").appendTo(".bar5");
             $("<p>").addClass("healthBarP").html(this.arena.bloodElf.health).appendTo(".healthBar5");
             $("<p>").attr("id", "bloodElf").appendTo(".hordeBloodElf")
-
-            // console.log(event);
             $("#button5").css("display", "none");
 
         });
@@ -244,7 +214,6 @@ export function ArenaLook(arenaName) {
             $(".button").css("visibility", "visible");
             $(".button1").css("visibility", "visible");
             $(".hordeUndead").appendTo(".fightDesno");
-            // console.log(event);
             $("#button6").css("display", "none");
             $("<div>").addClass("healthBar6").appendTo(".hordeUndead");
             $("<div>").addClass("bar6").appendTo(".healthBar6");
