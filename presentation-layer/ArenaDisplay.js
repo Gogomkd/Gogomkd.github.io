@@ -229,7 +229,7 @@ export function ArenaLook(arenaName) {
 
 
 
-
+        
         if (this.arena.human.health < 0) { // the one who dies in a duel can't be selected afterwards to fight he is dead 
             var one = $(".flip-card-back1")
             one.find("p").html("DEAD")

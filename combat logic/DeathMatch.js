@@ -24,7 +24,7 @@ export function DeathMatch() {
         var tepac5 = this.hordeCombatant[1];
         var tepac6 = this.hordeCombatant[2];
 
-        if (this.hordeCombatant.length === 0 && this.humanCombatant.length === 0) {
+        if (this.hordeCombatant.length === 0 && this.humanCombatant.length === 0) {//checking for fight requirements if they are not met fight cant happen
 
             var info = $("#info1")
             info.css("color", "#007f00").addClass("animated flash").html("CHOOSE YOUR FIGHTERS")
@@ -46,9 +46,9 @@ export function DeathMatch() {
             this.humanCombatant = [];
             this.hordeCombatant = [];
 
-        }
+        }// end of check box for start fight
 
-
+    
         if ((this.hordeCombatant.length === 1 && this.humanCombatant.length === 1)) {
             if (tepac1.isAlive && tepac4.isAlive) {
                 if (tepac1.type === "warrior" && tepac4.type === "warrior") {
@@ -887,7 +887,7 @@ export function DeathMatch() {
     }
 
 
-
+    //Generate army code
     //Choose Human
     this.getHumanWarrior = function () {
         this.humanCombatant.push(this.human);
